@@ -15,6 +15,9 @@ public class ClassPlanner {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        // Added new code here
+        System.out.println("Stuff");
     }
     
 }
