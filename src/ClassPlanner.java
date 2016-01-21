@@ -18,6 +18,9 @@ public class ClassPlanner {
         
         // Added new code here
         System.out.println("Stuff");
+        
+        //Another Test Line
+        System.out.println("Patrick Added This");
     }
     
 }
