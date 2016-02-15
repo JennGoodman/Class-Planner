@@ -17,10 +17,8 @@ public class ClassPlanner {
         // TODO code application logic here
         
         // Added new code here
-        System.out.println("Stuff");
-        
-        //Another Test Line
-        System.out.println("Patrick Added This");
+        HomePage home = new HomePage();
+        home.setVisible(true);
     }
     
 }
