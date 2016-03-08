@@ -50,6 +50,11 @@ public class HomePage extends javax.swing.JFrame {
         btnNewClass.setText("Create New Class");
         btnNewClass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClass.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnNewClass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewClassMouseClicked(evt);
+            }
+        });
 
         btnNewClassroom.setText("Create New Classroom");
         btnNewClassroom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -168,6 +173,12 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnQuitMouseClicked
+
+    private void btnNewClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewClassMouseClicked
+        // TODO add your handling code here:
+        CreateCourse n = new CreateCourse();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnNewClassMouseClicked
 
     /**
      * @param args the command line arguments

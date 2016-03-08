@@ -127,6 +127,9 @@
               <Dimension value="[75, 75]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNewClassMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNewClassroom">
           <Properties>
