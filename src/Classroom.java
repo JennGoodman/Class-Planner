@@ -9,12 +9,13 @@
  * @author Patrick
  */
 public class Classroom {
-    public int type, capacity, number;
+    public int type, capacity, number, building;
     
-    public Classroom(int t, int c, int n){
+    public Classroom(int t, int c, int n, int b){
         type = t;
         capacity = c;
         number = n;
+        building = b;
     }
     public Classroom(){
         type = 0;

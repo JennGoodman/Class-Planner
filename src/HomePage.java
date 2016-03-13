@@ -59,10 +59,20 @@ public class HomePage extends javax.swing.JFrame {
         btnNewClassroom.setText("Create New Classroom");
         btnNewClassroom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClassroom.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnNewClassroom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewClassroomActionPerformed(evt);
+            }
+        });
 
         btnNewBuilding.setText("Create New Building");
         btnNewBuilding.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewBuilding.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnNewBuilding.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewBuildingActionPerformed(evt);
+            }
+        });
 
         btnNewSchedule.setText("Create New Schedule");
         btnNewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -179,6 +189,18 @@ public class HomePage extends javax.swing.JFrame {
         CreateCourse n = new CreateCourse();
         n.setVisible(true);
     }//GEN-LAST:event_btnNewClassMouseClicked
+
+    private void btnNewBuildingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBuildingActionPerformed
+        // TODO add your handling code here:
+        CreateBuilding n = new CreateBuilding();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnNewBuildingActionPerformed
+
+    private void btnNewClassroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewClassroomActionPerformed
+        // TODO add your handling code here:
+        CreateClassroom n = new CreateClassroom();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnNewClassroomActionPerformed
 
     /**
      * @param args the command line arguments
