@@ -1,32 +1,108 @@
 package Data;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author Patrick
+ * @author Jenn
  */
 public class Course {
-    public String name;
-    public int pref1, pref2, pref3, capacity, type;
-    public Course(String n, int p1, int p2, int p3, int c, int t){
-        name = n;
-        pref1 = p1;
-        pref2 = p2;
-        pref3 = p3;
-        capacity = c;
-        type = t;
+    
+    private String ID;
+    private String courseNum;
+    private String name;
+    private String type;
+    private String[] features;
+    private boolean[] days;
+    private String[] startTimes;
+    private String[] endTimes;
+    private boolean IDc;
+    private boolean courseNumc;
+    private boolean namec;
+    private boolean typec;
+    private boolean featuresc;
+    private boolean daysc;
+    private boolean startTimesc;
+    private boolean endTimesc;
+    
+    Course() { this(""); }
+    
+    Course(String n) {
+        this.ID =
+        this.courseNum =
+        this.type = "";
+        this.name = n;
+        this.features = new String[DBManager.NUM_FEATURES];
+        this.days = new boolean[DBManager.WEEKDAYS];
+        this.startTimes = new String[DBManager.TIMESLOTS];
+        this.endTimes = new String[DBManager.TIMESLOTS];
+        for (int x=0;x<DBManager.WEEKDAYS;x++) { this.days[x] = false; }
+        for (int x=0;x<DBManager.TIMESLOTS;x++) { 
+            this.startTimes[x] = "";
+            this.endTimes[x] = "";
+        }
+        IDc = 
+        courseNumc = 
+        namec = 
+        typec = 
+        featuresc = 
+        daysc = 
+        startTimesc = 
+        endTimesc = false;
     }
-    public Course(){
-        name = null;
-        pref1 = 0;
-        pref2 = 0;
-        pref3 = 0;
-        capacity = 0;
-        type = 0;
+    
+    public boolean updateDB() {
+        String query = "";
+        
+        if (IDc) {}
+        if (courseNumc) {}
+        if (namec) {}
+        if (typec) {}
+        if (featuresc) {}
+        if (daysc) {}
+        if (startTimesc) {}
+        if (endTimesc) {}
+        
+        // Do Query
+        return true;
+    }
+    
+    public String getID() { return this.ID; }
+    
+    public String getName() { return this.name; }
+    
+    public boolean setName(String n) {
+        this.name = n;
+        return updateDB();
+    }
+    
+    public String[] getFeatures() { return features; }
+    
+    public boolean setFeatures(int i, String f) {
+        if (i < 0 || i >= DBManager.NUM_FEATURES) return false;
+        this.features[i] = f;
+        return updateDB();
+    }
+    
+    public boolean[] getWeekdays() { return days; }
+    
+    public boolean setWeekdays(boolean[] d) {
+        if (d.length != days.length) return false;
+        days = d;
+        return updateDB();
+    }
+    
+    public String[] getStartTimes() { return startTimes; }
+    
+    public boolean setStartTimes(String[] st) {
+        if (st.length != startTimes.length) return false;
+        startTimes = st;
+        return updateDB();
+    }
+    
+    public String[] getEndTimes() { return endTimes; }
+    
+    public boolean setEndTimes(String[] et) {
+        if (et.length != endTimes.length) return false;
+        endTimes = et;
+        return updateDB();
     }
 }
