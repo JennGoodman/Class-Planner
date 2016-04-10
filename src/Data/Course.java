@@ -1,108 +1,267 @@
 package Data;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
- *
- * @author Jenn
+ * Course class intended to be created and managed by DBManager
+ * 
+ * @author Jenn Goodman
  */
 public class Course {
     
+    private Connection dbc;
+    private Statement statement;
+    private ResultSet result;
     private String ID;
-    private String courseNum;
+    private String courseNumber;
     private String name;
     private String type;
-    private String[] features;
+    private boolean[] preferences;
+    private boolean[] features;
     private boolean[] days;
-    private String[] startTimes;
-    private String[] endTimes;
-    private boolean IDc;
-    private boolean courseNumc;
-    private boolean namec;
-    private boolean typec;
-    private boolean featuresc;
-    private boolean daysc;
-    private boolean startTimesc;
-    private boolean endTimesc;
+    private int capacity;
+    private Date startTime;
+    private Date endTime;
+    private boolean co = false;
+    private boolean na = false;
+    private boolean ty = false;
+    private boolean pr = false;
+    private boolean fe = false;
+    private boolean da = false;
+    private boolean cp = false;
+    private boolean st = false;
+    private boolean et = false;
+    /**
+     * Default Constructor
+     * @param c MySQL database connection
+     */
+    Course(Connection c) { this(c, null); }
     
-    Course() { this(""); }
-    
-    Course(String n) {
-        this.ID =
-        this.courseNum =
-        this.type = "";
-        this.name = n;
-        this.features = new String[DBManager.NUM_FEATURES];
-        this.days = new boolean[DBManager.WEEKDAYS];
-        this.startTimes = new String[DBManager.TIMESLOTS];
-        this.endTimes = new String[DBManager.TIMESLOTS];
-        for (int x=0;x<DBManager.WEEKDAYS;x++) { this.days[x] = false; }
-        for (int x=0;x<DBManager.TIMESLOTS;x++) { 
-            this.startTimes[x] = "";
-            this.endTimes[x] = "";
+    /**
+     * Complete Constructor
+     * @param c MySQL database connection string
+     * @param i row ID number to connect this object to
+     */
+    Course(Connection c, String i) {
+        dbc = c;
+        try {
+            statement = dbc.createStatement();
+            if (i == null) {
+                statement.executeUpdate(
+                        "INSERT INTO course", 
+                        Statement.RETURN_GENERATED_KEYS);
+                result = statement.getGeneratedKeys();
+                if (result.next()) {
+                    ID = Integer.toString(result.getInt("CourseID")); }
+            }
+            else { ID = i; }
+
+            if ( ID != null ) {
+                String query = "SELECT * FROM course WHERE CourseID=" + ID;
+                statement = dbc.createStatement();
+                result = statement.executeQuery(query);
+                result.next();
+
+                name = result.getString("Name");
+                courseNumber = result.getString("CourseNumber");
+                type = result.getString("CourseType");
+                capacity = result.getInt("Capacity");
+                startTime = result.getDate("StartTime");
+                endTime = result.getDate("EndTime");
+                days[0] = result.getBoolean("Monday");
+                days[1] = result.getBoolean("Tuesday");
+                days[2] = result.getBoolean("Wednesday");
+                days[3] = result.getBoolean("Thursday");
+                days[4] = result.getBoolean("Friday");
+                days[5] = result.getBoolean("Saturday");
+                days[6] = result.getBoolean("Sunday");
+                for (int f=0;f<3;f++) {
+                    features[f]=result.getBoolean("Features"+(f+1)); }
+                for (int p=0;p<3;p++) {
+                    preferences[p]=result.getBoolean("Preference"+(p+1)); }
+            }
+        } catch (SQLException e) {
+        System.out.println("SQLException: " + e.getMessage());
+        System.out.println("SQL State: " + e.getSQLState());
+        System.out.println("SQL Error: " + e.getErrorCode());
         }
-        IDc = 
-        courseNumc = 
-        namec = 
-        typec = 
-        featuresc = 
-        daysc = 
-        startTimesc = 
-        endTimesc = false;
     }
-    
-    public boolean updateDB() {
-        String query = "";
-        
-        if (IDc) {}
-        if (courseNumc) {}
-        if (namec) {}
-        if (typec) {}
-        if (featuresc) {}
-        if (daysc) {}
-        if (startTimesc) {}
-        if (endTimesc) {}
-        
-        // Do Query
-        return true;
+    /**
+     * @return unique ID number of course
+     */
+    public String getID() {
+        return ID;
     }
-    
-    public String getID() { return this.ID; }
-    
-    public String getName() { return this.name; }
-    
+    /**
+     * @return current course name
+     */
+    public String getName() {
+        return name;
+    }    
+    /**
+     * @param n new name of course
+     * @return true if update successful
+     */
     public boolean setName(String n) {
-        this.name = n;
-        return updateDB();
+        name = n;
+        return update();
     }
-    
-    public String[] getFeatures() { return features; }
-    
-    public boolean setFeatures(int i, String f) {
-        if (i < 0 || i >= DBManager.NUM_FEATURES) return false;
-        this.features[i] = f;
-        return updateDB();
+    /**
+     * @return current features
+     */
+    public boolean[] getFeatures() {
+        return features;
     }
-    
-    public boolean[] getWeekdays() { return days; }
-    
-    public boolean setWeekdays(boolean[] d) {
-        if (d.length != days.length) return false;
-        days = d;
-        return updateDB();
+    /**
+     * @param f list of features to be set true/false
+     * @return true if update successful
+     */
+    public boolean setFeatures(boolean[] f) {
+        if (f.length == features.length) features = f;
+        return update();
     }
-    
-    public String[] getStartTimes() { return startTimes; }
-    
-    public boolean setStartTimes(String[] st) {
-        if (st.length != startTimes.length) return false;
-        startTimes = st;
-        return updateDB();
+    /**
+     * @return current days of course
+     */
+    public boolean[] getDays() {
+        return days;
     }
-    
-    public String[] getEndTimes() { return endTimes; }
-    
-    public boolean setEndTimes(String[] et) {
-        if (et.length != endTimes.length) return false;
-        endTimes = et;
-        return updateDB();
+    /**
+     * @param d new list of days for course (Must be boolean[3])
+     * @return true if successful
+     */
+    public boolean setDays(boolean[] d) {
+        if (d.length == days.length) days = d;
+        return update();
+    }
+    /**
+     * @return current start time of course
+     */
+    public Date getStartTime() {
+        return startTime;
+    }
+    /**
+     * @param st new start time for course
+     * @return true if successful
+     */
+    public boolean setStartTimes(Date st) {
+        startTime = st;
+        return update();
+    }
+    /**
+     * @return current end time of course
+     */
+    public Date getEndTime() {
+        return endTime;
+    }    
+    /**
+     * @param et new end time for course
+     * @return true if successful
+     */
+    public boolean setEndTime(Date et) {
+        endTime = et;
+        return update();
+    }    
+    /**
+     * @return current preferences
+     */
+    public boolean[] getPreferences() {
+        return preferences;
+    }
+    /**
+     * @param p new list of preferences (Must be array[3])
+     * @return true if update successful
+     */
+    public boolean setPreferences(boolean[] p) {
+        if (p.length == preferences.length) preferences = p;
+        else { return false; }
+        return update();
+    }
+    /**
+     * @return current course number
+     */
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+    /**
+     * @param c new course number
+     * @return true if update successful
+     */
+    public boolean setCourseNumber(String c) {
+        courseNumber = c;
+        return update();
+    }
+    /**
+     * @return current capacity of course
+     */
+    public int getCapacity() {
+        return capacity;
+    }
+    /**
+     * @param c new capacity of course
+     * @return true if update successful
+     */
+    public boolean setCapacity(int c) {
+        capacity = c;
+        return update();
+    }
+    /**
+     * @return current type of course
+     */
+    public String getType() {
+        return type;
+    }
+    /**
+     * @param t type of course
+     * @return true if update successful
+     */
+    public boolean setType(String t) {
+        type = t;
+        return update();
+    }
+    /**
+     * @return true if update successful
+     */
+    private boolean update() {
+        
+        StringBuilder sb =  new StringBuilder();
+        
+        if (co) sb.append(courseNumber);
+        if (cp) sb.append(capacity);
+        if (da) {
+            sb.append(days[0]);
+            sb.append(days[1]);
+            sb.append(days[2]);
+        }
+        if (et) sb.append(endTime);
+        if (fe){
+            sb.append(features[0]);
+            sb.append(features[1]);
+            sb.append(features[2]);
+        }
+        if (na) sb.append(name);
+        if (pr) {
+            sb.append(preferences[0]);
+            sb.append(preferences[1]);
+            sb.append(preferences[2]);
+        }
+        if (st) sb.append(startTime);
+        if (ty) sb.append(type);
+        
+        String query = sb.toString();
+        
+        try {
+            statement.executeUpdate(query);
+            return true;
+        } catch (SQLException e) {
+        System.out.println("SQLException: " + e.getMessage());
+        System.out.println("SQL State: " + e.getSQLState());
+        System.out.println("SQL Error: " + e.getErrorCode());
+        }
+        return false;
     }
 }

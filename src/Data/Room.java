@@ -1,5 +1,7 @@
 package Data;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Jenn Goodman
@@ -13,40 +15,38 @@ public class Room {
     private String[] features;
     private String capacity;
     
-    Room() { this(""); }
-    
-    Room(String n) {
-        this.ID = "";
-        this.type = "";
-        this.number = "";
-        this.BuildingID = "";
-        this.capacity = "";
-        this.features = new String[DBManager.NUM_FEATURES];
+    Room(Connection dbc) {
+        ID = "";
+        type = "";
+        number = "";
+        BuildingID = "";
+        capacity = "";
+        features = new String[DBManager.NUM_FEATURES];
     }
     
-    public String getID() { return this.ID; }
+    public String getID() { return ID; }
     
-    public String getType() { return this.type; }
+    public String getType() { return type; }
     
-    public void setType(String t) { this.type = t; }
+    public void setType(String t) { type = t; }
     
-    public String getRoomNum() { return this.number; }
+    public String getRoomNum() { return number; }
     
-    public void setRoomNum(String n) { this.number = n; }
+    public void setRoomNum(String n) { number = n; }
     
-    public String getCapacity() { return this.capacity; }
+    public String getCapacity() { return capacity; }
     
-    public void setCapacity(String n) { this.capacity = n; }
+    public void setCapacity(String n) { capacity = n; }
     
-    public String getBuildingID() { return this.ID; }
+    public String getBuildingID() { return ID; }
     
-    public void setBuildingID(String id) { this.ID = id; }
+    public void setBuildingID(String id) { ID = id; }
     
     public String[] getFeatures() { return features; }
     
     public boolean setFeatures(int i, String f) {
         if (i >= DBManager.NUM_FEATURES) return false;
-        this.features[i-1] = f;
+        features[i-1] = f;
         return true;
     }
 }

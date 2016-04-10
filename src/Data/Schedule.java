@@ -1,5 +1,6 @@
 package Data;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class Schedule {
     private int cIndex;
     private int sLength;
     
-    Schedule() {
+    Schedule(Connection dbc) {
         ID = "";
         rIndex = -1;
         cIndex = 0;
