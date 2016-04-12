@@ -35,8 +35,10 @@ public class HomePage extends javax.swing.JFrame {
         btnNewBuilding = new javax.swing.JButton();
         btnNewSchedule = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        btnViewClassrooms = new javax.swing.JButton();
+        btnViewCourses = new javax.swing.JButton();
         btnViewSchedule = new javax.swing.JButton();
+        btnViewClassrooms2 = new javax.swing.JButton();
+        btnViewBuildings = new javax.swing.JButton();
         btnQuit = new javax.swing.JButton();
 
         btnViewClassrooms1.setText("View Classrooms");
@@ -44,12 +46,12 @@ public class HomePage extends javax.swing.JFrame {
         btnViewClassrooms1.setMinimumSize(new java.awt.Dimension(75, 75));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(300, 400));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Create"));
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 150));
 
-        btnNewClass.setText("Create New Class");
+        btnNewClass.setText("Create New Course");
+        btnNewClass.setActionCommand("Create New Course");
         btnNewClass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClass.setMinimumSize(new java.awt.Dimension(75, 75));
         btnNewClass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,13 +115,27 @@ public class HomePage extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("View"));
 
-        btnViewClassrooms.setText("View Classrooms");
-        btnViewClassrooms.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnViewClassrooms.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewCourses.setText("View Courses");
+        btnViewCourses.setActionCommand("View Courses");
+        btnViewCourses.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnViewCourses.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewCourses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnViewCoursesMouseClicked(evt);
+            }
+        });
 
         btnViewSchedule.setText("View Schedule");
         btnViewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewSchedule.setMinimumSize(new java.awt.Dimension(75, 75));
+
+        btnViewClassrooms2.setText("View Classrooms");
+        btnViewClassrooms2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnViewClassrooms2.setMinimumSize(new java.awt.Dimension(75, 75));
+
+        btnViewBuildings.setText("View Buildings");
+        btnViewBuildings.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnViewBuildings.setMinimumSize(new java.awt.Dimension(75, 75));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,9 +143,15 @@ public class HomePage extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnViewClassrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnViewCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewBuildings, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnViewClassrooms2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -137,9 +159,13 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewClassrooms, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewBuildings, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewClassrooms2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnViewSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnQuit.setText("Quit Program");
@@ -155,16 +181,16 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,9 +199,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -203,6 +229,12 @@ public class HomePage extends javax.swing.JFrame {
         CreateClassroom n = new CreateClassroom();
         n.setVisible(true);
     }//GEN-LAST:event_btnNewClassroomActionPerformed
+
+    private void btnViewCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewCoursesMouseClicked
+        // TODO add your handling code here:
+        ViewCourses n = new ViewCourses();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnViewCoursesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,8 +277,10 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnNewClassroom;
     private javax.swing.JButton btnNewSchedule;
     private javax.swing.JButton btnQuit;
-    private javax.swing.JButton btnViewClassrooms;
+    private javax.swing.JButton btnViewBuildings;
     private javax.swing.JButton btnViewClassrooms1;
+    private javax.swing.JButton btnViewClassrooms2;
+    private javax.swing.JButton btnViewCourses;
     private javax.swing.JButton btnViewSchedule;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

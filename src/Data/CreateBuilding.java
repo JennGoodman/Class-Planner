@@ -113,8 +113,10 @@ public class CreateBuilding extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         String name = txtName.getText();
+        DBManager dbm = new DBManager();
+        Building b = dbm.newBuilding();
         
-        Building b = new Building(0, name);
+        b.setName(name);
         
         int result = JOptionPane.showConfirmDialog((Component) null, "Building added but contains no rooms, would you like to add rooms now?",
         "alert", JOptionPane.YES_NO_OPTION);
