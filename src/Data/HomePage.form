@@ -119,7 +119,6 @@
         <Component class="javax.swing.JButton" name="btnNewClass">
           <Properties>
             <Property name="text" type="java.lang.String" value="Create New Course"/>
-            <Property name="actionCommand" type="java.lang.String" value="Create New Course"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
@@ -216,7 +215,6 @@
         <Component class="javax.swing.JButton" name="btnViewCourses">
           <Properties>
             <Property name="text" type="java.lang.String" value="View Courses"/>
-            <Property name="actionCommand" type="java.lang.String" value="View Courses"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
@@ -224,6 +222,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnViewCoursesMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewCoursesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnViewSchedule">
@@ -243,6 +242,9 @@
               <Dimension value="[75, 75]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewClassrooms2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnViewBuildings">
           <Properties>
@@ -252,6 +254,9 @@
               <Dimension value="[75, 75]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewBuildingsActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

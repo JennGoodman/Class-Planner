@@ -51,7 +51,6 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 150));
 
         btnNewClass.setText("Create New Course");
-        btnNewClass.setActionCommand("Create New Course");
         btnNewClass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClass.setMinimumSize(new java.awt.Dimension(75, 75));
         btnNewClass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,12 +115,16 @@ public class HomePage extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("View"));
 
         btnViewCourses.setText("View Courses");
-        btnViewCourses.setActionCommand("View Courses");
         btnViewCourses.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewCourses.setMinimumSize(new java.awt.Dimension(75, 75));
         btnViewCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnViewCoursesMouseClicked(evt);
+            }
+        });
+        btnViewCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewCoursesActionPerformed(evt);
             }
         });
 
@@ -132,10 +135,20 @@ public class HomePage extends javax.swing.JFrame {
         btnViewClassrooms2.setText("View Classrooms");
         btnViewClassrooms2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewClassrooms2.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewClassrooms2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewClassrooms2ActionPerformed(evt);
+            }
+        });
 
         btnViewBuildings.setText("View Buildings");
         btnViewBuildings.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewBuildings.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewBuildings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBuildingsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,9 +245,24 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnViewCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewCoursesMouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewCoursesMouseClicked
+
+    private void btnViewCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCoursesActionPerformed
+        // TODO add your handling code here:
         ViewCourses n = new ViewCourses();
         n.setVisible(true);
-    }//GEN-LAST:event_btnViewCoursesMouseClicked
+    }//GEN-LAST:event_btnViewCoursesActionPerformed
+
+    private void btnViewBuildingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildingsActionPerformed
+        ViewBuildings n = new ViewBuildings();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnViewBuildingsActionPerformed
+
+    private void btnViewClassrooms2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewClassrooms2ActionPerformed
+        ViewRooms n = new ViewRooms();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnViewClassrooms2ActionPerformed
 
     /**
      * @param args the command line arguments
