@@ -36,18 +36,14 @@ public class CreateCourse extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        ftxtStartTime = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
-        ftxtEndTime = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         ftxtCapacity = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         ckbMonday = new javax.swing.JCheckBox();
         ckbTuesday = new javax.swing.JCheckBox();
-        chkWednesday = new javax.swing.JCheckBox();
-        chkThursday = new javax.swing.JCheckBox();
-        chkFriday = new javax.swing.JCheckBox();
+        ckbWednesday = new javax.swing.JCheckBox();
+        ckbThursday = new javax.swing.JCheckBox();
+        ckbFriday = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         cmbFirstPref = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
@@ -56,6 +52,8 @@ public class CreateCourse extends javax.swing.JFrame {
         cmbThirdPref = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         cmbType = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        txtNumber = new javax.swing.JTextField();
         btnReturn = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
 
@@ -72,19 +70,8 @@ public class CreateCourse extends javax.swing.JFrame {
 
         txtName.setToolTipText("The name of the new course.");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Start time:");
-
-        ftxtStartTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("End Time:");
-
-        ftxtEndTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Capacity:");
 
         ftxtCapacity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -95,11 +82,11 @@ public class CreateCourse extends javax.swing.JFrame {
 
         ckbTuesday.setText("Tuesday");
 
-        chkWednesday.setText("Wednesday");
+        ckbWednesday.setText("Wednesday");
 
-        chkThursday.setText("Thursday");
+        ckbThursday.setText("Thursday");
 
-        chkFriday.setText("Friday");
+        ckbFriday.setText("Friday");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,15 +96,15 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ckbMonday)
-                    .addComponent(chkThursday))
+                    .addComponent(ckbThursday))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(ckbTuesday)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkWednesday))
-                    .addComponent(chkFriday))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ckbWednesday))
+                    .addComponent(ckbFriday))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,32 +113,30 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ckbMonday)
                     .addComponent(ckbTuesday)
-                    .addComponent(chkWednesday))
+                    .addComponent(ckbWednesday))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkThursday)
-                    .addComponent(chkFriday)))
+                    .addComponent(ckbThursday)
+                    .addComponent(ckbFriday)))
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("First Prefrence:");
 
-        cmbFirstPref.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Second Prefrence:");
-
-        cmbSecondPref.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Third Prefrence:");
 
-        cmbThirdPref.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Type of Class:");
 
-        cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal Classroom", "Lecture Hall", "Laboratory" }));
+        cmbType.setName(""); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Course Number:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,20 +148,6 @@ public class CreateCourse extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName)
-                            .addComponent(ftxtStartTime)
-                            .addComponent(ftxtEndTime)
-                            .addComponent(ftxtCapacity, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(jLabel8)
@@ -186,29 +157,40 @@ public class CreateCourse extends javax.swing.JFrame {
                             .addComponent(cmbFirstPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbSecondPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbThirdPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(6, 6, 6)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumber)
+                            .addComponent(ftxtCapacity)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(ftxtStartTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(ftxtEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(ftxtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ftxtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,7 +243,7 @@ public class CreateCourse extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -282,17 +264,45 @@ public class CreateCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
+        
+        DBManager dbm = new DBManager();
+        boolean features[] = new boolean[] {false, false, false};
+        boolean days[] = new boolean[] {false, false, false, false, false, false, false};
+        
         String Name = txtName.getText();
-        String Start = ftxtStartTime.getText();
-        String End = ftxtEndTime.getText();
         
         int Capacity = Integer.parseInt(ftxtCapacity.getText());
-        Object PrefOne = cmbFirstPref.getSelectedItem();
-        Object PrefTwo = cmbSecondPref.getSelectedItem();
-        Object PrefThree = cmbThirdPref.getSelectedItem();
-        Object Type = cmbType.getSelectedItem();
+        String PrefOne = cmbFirstPref.getSelectedItem().toString();
+        String PrefTwo = cmbSecondPref.getSelectedItem().toString();
+        String PrefThree = cmbThirdPref.getSelectedItem().toString();
+        String CourseNumber = txtNumber.getText();
+        int Type = cmbType.getSelectedIndex();
         
-        //Course c = new Course(Name, PrefOne, PrefTwo, PrefThree, Capacity, Type);
+        features[Type] = true;
+        
+        Course c = dbm.newCourse();
+        
+        if(ckbMonday.isSelected()){
+            days[0] = true;
+        }
+        if(ckbTuesday.isSelected()){
+            days[1] = true;
+        }
+        if(ckbWednesday.isSelected()){
+            days[2] = true;
+        }
+        if(ckbThursday.isSelected()){
+            days[3] = true;
+        }
+        if(ckbFriday.isSelected()){
+            days[4] = true;
+        }
+        
+        c.setName(Name);
+        c.setCapacity(Capacity);
+        c.setFeatures(features);
+        c.setDays(days);
+        c.setCourseNumber(CourseNumber);
     }//GEN-LAST:event_btnSubmitMouseClicked
 
     /**
@@ -333,22 +343,19 @@ public class CreateCourse extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JCheckBox chkFriday;
-    private javax.swing.JCheckBox chkThursday;
-    private javax.swing.JCheckBox chkWednesday;
+    private javax.swing.JCheckBox ckbFriday;
     private javax.swing.JCheckBox ckbMonday;
+    private javax.swing.JCheckBox ckbThursday;
     private javax.swing.JCheckBox ckbTuesday;
+    private javax.swing.JCheckBox ckbWednesday;
     private javax.swing.JComboBox cmbFirstPref;
     private javax.swing.JComboBox cmbSecondPref;
     private javax.swing.JComboBox cmbThirdPref;
     private javax.swing.JComboBox cmbType;
     private javax.swing.JFormattedTextField ftxtCapacity;
-    private javax.swing.JFormattedTextField ftxtEndTime;
-    private javax.swing.JFormattedTextField ftxtStartTime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -357,5 +364,6 @@ public class CreateCourse extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNumber;
     // End of variables declaration//GEN-END:variables
 }

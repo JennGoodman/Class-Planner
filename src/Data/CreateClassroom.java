@@ -154,26 +154,31 @@ public class CreateClassroom extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+        DBManager dbm = new DBManager();
+        Room r = dbm.newRoom();
+        
+        boolean features[] = new boolean[] {false, false, false};
         String number = txtRoomNumber.getText();
-        int capacity = Integer.parseInt(txtCapacity.getText());
+        String capacity = txtCapacity.getText();
         
         String type = cmbType.getSelectedItem().toString();
-        int t;
+        int t = 0;
         switch(type){
             case "Standard Classroom":
-                t = 1;
+                t = 0;
                 break;
             case "Lecture Hall":
-                t = 2;
+                t = 1;
                 break;
             case "Laboratory":
-                t = 3;
+                t = 2;
                 break;                
         }
+        features[t] = true;
         Object building = cmbBuilding.getSelectedItem();
         
-        //Classroom n = new Classroom(t, capacity, number, building);
-        
+        r.setCapacity(capacity);
+        r.setRoomNum(number);
         int result = JOptionPane.showConfirmDialog((Component) null, "Classroom added would you like to create another classroom?",
         "alert", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_btnSubmitActionPerformed
