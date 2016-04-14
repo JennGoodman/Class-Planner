@@ -111,7 +111,7 @@ public class Building {
                     "SELECT RoomID FROM room WHERE BuildingID='"+ID+"'");
             while (result.next()) {rm.add(result.getString("RoomID"));}}
         catch (SQLException e) {report(e);}
-        return "BuildingID: "+ID+"\nBuildingName: "+name+"\n"+"Rooms: "+rm.toString();}
+        return "Building ID: "+ID+", Building Name: "+name+", "+"Rooms: "+rm.toString();}
     /**
      * @param e SQLException to be reported
      * @return false in all cases.

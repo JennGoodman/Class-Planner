@@ -89,11 +89,13 @@ public class DBManager {
      * or null if empty.
      */
     public String[] getAllCourseIDs() {
-        try {
-            result = statement.executeQuery("SELECT CourseID FROM course");
-            if (result.next())
-                return (String[])result.getArray("CourseID").getArray();
-        } catch (SQLException e) { report(e);}
+        ArrayList<String> ids = new ArrayList();
+        try {result = statement.executeQuery("SELECT CourseID FROM course");
+            if (result.next()) {ids.add(result.getString("CourseID"));}
+            String[] star = new String[ids.size()];
+            for (int x=0; x<star.length; x++) {star[x] = ids.get(x);}
+            return star;}
+        catch (SQLException e) {report(e);}
         return null;}
     /**
      * @return all building ID numbers from the current database
@@ -101,25 +103,27 @@ public class DBManager {
      */
     public String[] getAllBuildingIDs() {
         ArrayList<String> rm = new ArrayList();
-    try {
-        result = statement.executeQuery("SELECT BuildingID FROM building");
-        while (result.next()) {rm.add(result.getString("BuildingID"));}
-        String[] star = new String[rm.size()];
-        for (int x=0; x < star.length; x++) {star[x] = rm.get(x);}
-        return star;}
-    catch (SQLException e) {report(e);}
+        try {
+            result = statement.executeQuery("SELECT BuildingID FROM building");
+            while (result.next()) {rm.add(result.getString("BuildingID"));}
+            String[] star = new String[rm.size()];
+            for (int x=0; x < star.length; x++) {star[x] = rm.get(x);}
+            return star;}
+        catch (SQLException e) {report(e);}
         return null;}
     /**
      * @return all room ID numbers from the current database
      * or null if empty.
      */
     public String[] getAllRoomIDs() {
-    try {
-        result = statement.executeQuery("SELECT RoomID FROM room");
-        if (result.next())
-            System.out.println("Test");
-            return (String[])result.getArray("RoomID").getArray();}
-    catch (SQLException e) {report(e);}
+        ArrayList<String> ids = new ArrayList();
+        try {
+            result = statement.executeQuery("SELECT RoomID FROM room");
+            if (result.next()) {ids.add(result.getString("RoomID"));}
+            String[] star = new String[ids.size()];
+            for (int x=0; x<star.length; x++) {star[x] = ids.get(x);}
+            return star;}
+        catch (SQLException e) {report(e);}
         return null;}
     /**
      * @return next course object in order (begins at first row).
@@ -127,7 +131,7 @@ public class DBManager {
     public Course getNextCourse() {
         String[] ids = this.getAllCourseIDs();
         if (ids != null && currentCourse < ids.length) {
-            return new Course(dbc, ids[currentCourse++]); }
+            return new Course(dbc, ids[currentCourse++]);}
         return null;}
     /**
      * @return next building object in order (begins at first row).

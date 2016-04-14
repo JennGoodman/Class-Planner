@@ -52,11 +52,9 @@ public class Course {
                         Statement.RETURN_GENERATED_KEYS);
                 result = statement.getGeneratedKeys();
                 if (result.next())
-                    ID = Integer.toString(result.getInt("CourseID"));
-            }
+                    ID = result.getString("CourseID");}
             else { ID = i; }
             if ( ID != null ) {
-                statement = dbc.createStatement();
                 result = statement.executeQuery(
                         "SELECT * FROM course WHERE CourseID="+ID);
                 if (result.next()) {
@@ -201,12 +199,12 @@ public class Course {
         StringBuilder sb = new StringBuilder();
         String[] d = {"M","T","W","Th","F","Sat","Sun"};
         boolean dash = false;
-        sb.append("CourseID: "); sb.append(ID);
-        sb.append("\nCourseNumber: "); sb.append(courseNumber);
-        sb.append("\nCourseName: "); sb.append(courseName);
-        sb.append("\nCourseType: "); sb.append(type);
-        sb.append("\nCapacity: "); sb.append(capacity);
-        sb.append("\nWeekdays: ");
+        sb.append("Course ID: "); sb.append(ID);
+        sb.append(", Course Number: "); sb.append(courseNumber);
+        sb.append(", Course Name: "); sb.append(courseName);
+        sb.append(", Course Type: "); sb.append(type);
+        sb.append(", Capacity: "); sb.append(capacity);
+        sb.append(", Weekdays: ");
         for(int x=0;x<days.length;x++) {
             if (days[x]==1) {
                 if (dash) {
@@ -214,11 +212,11 @@ public class Course {
                 else { sb.append(d[x]); dash = true; } } }
         if (!dash) sb.append("None");
         for(int x=0;x<features.length;x++) {
-            sb.append("\nFeature"); sb.append(x);
+            sb.append(", Feature"); sb.append(x);
             if (features[x]==1) sb.append(": Yes");
             else sb.append(": No"); }
         for(int x=0;x<preferences.length;x++) {
-            sb.append("\nPreference"); sb.append(x);
+            sb.append(", Preference"); sb.append(x);
             sb.append(": "); sb.append(preferences[x]); }
         return sb.toString();
     }
