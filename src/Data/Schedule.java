@@ -9,11 +9,15 @@ import java.util.ArrayList;
  */
 public class Schedule {
     
+    //<editor-fold defaultstate="collapsed" desc="Fields">
     private String ID;
+    
     private ArrayList<String[]> schedule;
+    
     private int rIndex;
     private int cIndex;
     private int sLength;
+    //</editor-fold>
     
     Schedule(Connection dbc) {
         ID = "";

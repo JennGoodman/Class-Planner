@@ -8,20 +8,33 @@ import java.sql.Connection;
  */
 public class Room {
     
+    //<editor-fold defaultstate="collapsed" desc="Fields">
+    private Connection dbc;
+    
     private String ID;
     private String type;
     private String number;
     private String BuildingID;
     private String[] features;
     private String capacity;
+    //</editor-fold>
     
-    Room(Connection dbc) {
-        ID = "";
-        type = "";
-        number = "";
-        BuildingID = "";
-        capacity = "";
-        features = new String[DBManager.NUM_FEATURES];
+    Room(Connection d) { this(d, null); }
+    
+    Room (Connection d, String id) {
+        dbc = d;
+        ID = id;
+        if (id == null) {
+            type = "";
+            number = "";
+            BuildingID = "";
+            capacity = "";
+            features = new String[DBManager.NUM_FEATURES];
+            // make new
+        }
+        else {
+            // populate Room
+        }
     }
     
     public String getID() { return ID; }
