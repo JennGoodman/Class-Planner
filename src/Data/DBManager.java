@@ -155,6 +155,83 @@ public class DBManager {
             return (String[])result.getArray("Name").getArray();
         } catch (SQLException e) { report(e); }
         return null;}
+    
+    public Object[][] getBuildingTable() {
+        Object[][] table;
+        ArrayList<Object[]> tempList = new ArrayList();
+        Object[] tempRow;
+        try {
+            result = statement.executeQuery("SELECT * FROM building");
+            while (result.next()) {
+                tempRow = new Object[2];
+                tempRow[0] = result.getInt("BuildingID");
+                tempRow[1] = result.getString("Name");
+                tempList.add(tempRow);
+            }
+            table = new Object[tempList.size()][2];
+            for (int x = 0; x < tempList.size(); x++) {
+                table[x] = tempList.get(x);
+            }
+            return table;
+        }
+        catch(SQLException e) {report(e);}
+        return null;
+    }
+    
+    public Object[][] getCourseTable() {
+        Object[][] table;
+        ArrayList<Object[]> tempList = new ArrayList();
+        Object[] tempRow;
+        try {result = statement.executeQuery("SELECT * FROM course");
+            while (result.next()) {
+                tempRow = new Object[18];
+                tempRow[0] = result.getInt("CourseID");
+                tempRow[1] = result.getString("CourseNumber");
+                tempRow[2] = result.getString("CourseName");
+                tempRow[3] = result.getString("CourseType");
+                tempRow[4] = result.getInt("Capacity");
+                tempRow[5] = result.getInt("Monday");
+                tempRow[6] = result.getInt("Tuesday");
+                tempRow[7] = result.getInt("Wednesday");
+                tempRow[8] = result.getInt("Thursday");
+                tempRow[9] = result.getInt("Friday");
+                tempRow[10] = result.getInt("Saturday");
+                tempRow[11] = result.getInt("Sunday");
+                tempRow[12] = result.getInt("Feature1");
+                tempRow[13] = result.getInt("Feature2");
+                tempRow[14] = result.getInt("Feature3");
+                tempRow[15] = result.getString("Preference1");
+                tempRow[16] = result.getString("Preference2");
+                tempRow[17] = result.getString("Preference3");
+                tempList.add(tempRow);}
+            table = new Object[tempList.size()][];
+            for (int x = 0; x < tempList.size(); x++) {
+                table[x] = tempList.get(x);}
+            return table;}
+        catch (SQLException e) {report(e);}
+        return null;}
+    
+    public Object[][] getRoomTable() {
+        Object[][] table;
+        ArrayList<Object[]> tempList = new ArrayList();
+        Object[] tempRow;
+        try {
+            result = statement.executeQuery("SELECT * FROM room");
+            while (result.next()) {
+                tempRow = new Object[5];
+                tempRow[0] = result.getInt("RoomID");
+                tempRow[1] = result.getInt("ClassType");
+                tempRow[2] = result.getInt("Capacity");
+                tempRow[3] = result.getInt("RoomNum");
+                tempRow[4] = result.getInt("BuildingID");
+                tempList.add(tempRow);}
+            table = new Object[tempList.size()][];
+            for (int x = 0; x < tempList.size(); x++) {
+                table[x] = tempList.get(x);}
+            return table;}
+        catch(SQLException e) {report(e);}
+        return null;
+    }
     /**
      * Reset building index to 0.
      */
