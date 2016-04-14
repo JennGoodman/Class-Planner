@@ -93,14 +93,6 @@ public class ViewCourses extends javax.swing.JFrame {
         columnBinding.setColumnName("Friday");
         columnBinding.setColumnClass(Boolean.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${saturday}"));
-        columnBinding.setColumnName("Saturday");
-        columnBinding.setColumnClass(Boolean.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sunday}"));
-        columnBinding.setColumnName("Sunday");
-        columnBinding.setColumnClass(Boolean.class);
-        columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane2.setViewportView(jTable1);

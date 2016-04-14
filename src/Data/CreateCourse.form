@@ -50,12 +50,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnReturn" alignment="3" max="32767" attributes="0"/>
                   <Component id="btnSubmit" alignment="3" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,18 +92,25 @@
                               <Component id="cmbType" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" max="32767" attributes="0"/>
-                              <Component id="jLabel6" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ftxtCapacity" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="txtName" min="-2" pref="148" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtNumber" max="32767" attributes="0"/>
+                              <Component id="ftxtCapacity" max="32767" attributes="0"/>
+                              <Component id="txtName" pref="148" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -114,17 +121,22 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ftxtCapacity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ftxtCapacity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -197,18 +209,18 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ckbMonday" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkThursday" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbThursday" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="ckbTuesday" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="chkWednesday" min="-2" max="-2" attributes="0"/>
+                              <Component id="ckbWednesday" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="chkFriday" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbFriday" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -219,12 +231,12 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ckbMonday" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ckbTuesday" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkWednesday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbWednesday" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chkThursday" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chkFriday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbThursday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbFriday" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -241,17 +253,17 @@
                 <Property name="text" type="java.lang.String" value="Tuesday"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="chkWednesday">
+            <Component class="javax.swing.JCheckBox" name="ckbWednesday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Wednesday"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="chkThursday">
+            <Component class="javax.swing.JCheckBox" name="ckbThursday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Thursday"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="chkFriday">
+            <Component class="javax.swing.JCheckBox" name="ckbFriday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Friday"/>
               </Properties>
@@ -322,6 +334,16 @@
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Course Number:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNumber">
         </Component>
       </SubComponents>
     </Container>

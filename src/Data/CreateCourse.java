@@ -41,9 +41,9 @@ public class CreateCourse extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         ckbMonday = new javax.swing.JCheckBox();
         ckbTuesday = new javax.swing.JCheckBox();
-        chkWednesday = new javax.swing.JCheckBox();
-        chkThursday = new javax.swing.JCheckBox();
-        chkFriday = new javax.swing.JCheckBox();
+        ckbWednesday = new javax.swing.JCheckBox();
+        ckbThursday = new javax.swing.JCheckBox();
+        ckbFriday = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         cmbFirstPref = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
@@ -52,6 +52,8 @@ public class CreateCourse extends javax.swing.JFrame {
         cmbThirdPref = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         cmbType = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        txtNumber = new javax.swing.JTextField();
         btnReturn = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
 
@@ -80,11 +82,11 @@ public class CreateCourse extends javax.swing.JFrame {
 
         ckbTuesday.setText("Tuesday");
 
-        chkWednesday.setText("Wednesday");
+        ckbWednesday.setText("Wednesday");
 
-        chkThursday.setText("Thursday");
+        ckbThursday.setText("Thursday");
 
-        chkFriday.setText("Friday");
+        ckbFriday.setText("Friday");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,15 +96,15 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ckbMonday)
-                    .addComponent(chkThursday))
+                    .addComponent(ckbThursday))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(ckbTuesday)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkWednesday))
-                    .addComponent(chkFriday))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ckbWednesday))
+                    .addComponent(ckbFriday))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,11 +113,11 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ckbMonday)
                     .addComponent(ckbTuesday)
-                    .addComponent(chkWednesday))
+                    .addComponent(ckbWednesday))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkThursday)
-                    .addComponent(chkFriday)))
+                    .addComponent(ckbThursday)
+                    .addComponent(ckbFriday)))
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -132,6 +134,9 @@ public class CreateCourse extends javax.swing.JFrame {
 
         cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal Classroom", "Lecture Hall", "Laboratory" }));
         cmbType.setName(""); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Course Number:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,30 +158,39 @@ public class CreateCourse extends javax.swing.JFrame {
                             .addComponent(cmbSecondPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbThirdPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ftxtCapacity)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(6, 6, 6)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumber)
+                            .addComponent(ftxtCapacity)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(ftxtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(txtNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ftxtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -229,7 +243,7 @@ public class CreateCourse extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -253,6 +267,7 @@ public class CreateCourse extends javax.swing.JFrame {
         
         DBManager dbm = new DBManager();
         boolean features[] = new boolean[] {false, false, false};
+        boolean days[] = new boolean[] {false, false, false, false, false, false, false};
         
         String Name = txtName.getText();
         
@@ -260,15 +275,34 @@ public class CreateCourse extends javax.swing.JFrame {
         String PrefOne = cmbFirstPref.getSelectedItem().toString();
         String PrefTwo = cmbSecondPref.getSelectedItem().toString();
         String PrefThree = cmbThirdPref.getSelectedItem().toString();
+        String CourseNumber = txtNumber.getText();
         int Type = cmbType.getSelectedIndex();
         
         features[Type] = true;
         
         Course c = dbm.newCourse();
         
+        if(ckbMonday.isSelected()){
+            days[0] = true;
+        }
+        if(ckbTuesday.isSelected()){
+            days[1] = true;
+        }
+        if(ckbWednesday.isSelected()){
+            days[2] = true;
+        }
+        if(ckbThursday.isSelected()){
+            days[3] = true;
+        }
+        if(ckbFriday.isSelected()){
+            days[4] = true;
+        }
+        
         c.setName(Name);
         c.setCapacity(Capacity);
         c.setFeatures(features);
+        c.setDays(days);
+        c.setCourseNumber(CourseNumber);
     }//GEN-LAST:event_btnSubmitMouseClicked
 
     /**
@@ -309,11 +343,11 @@ public class CreateCourse extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JCheckBox chkFriday;
-    private javax.swing.JCheckBox chkThursday;
-    private javax.swing.JCheckBox chkWednesday;
+    private javax.swing.JCheckBox ckbFriday;
     private javax.swing.JCheckBox ckbMonday;
+    private javax.swing.JCheckBox ckbThursday;
     private javax.swing.JCheckBox ckbTuesday;
+    private javax.swing.JCheckBox ckbWednesday;
     private javax.swing.JComboBox cmbFirstPref;
     private javax.swing.JComboBox cmbSecondPref;
     private javax.swing.JComboBox cmbThirdPref;
@@ -321,6 +355,7 @@ public class CreateCourse extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtCapacity;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -329,5 +364,6 @@ public class CreateCourse extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNumber;
     // End of variables declaration//GEN-END:variables
 }

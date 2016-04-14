@@ -22,6 +22,7 @@ public class CreateBuilding extends javax.swing.JFrame {
     public CreateBuilding() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
