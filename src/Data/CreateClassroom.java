@@ -59,7 +59,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Create a Classroom");
+        setTitle("Create Classroom");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Classroom Information"));
@@ -188,23 +188,30 @@ public class CreateClassroom extends javax.swing.JFrame {
                 break;                
         }
         features[t] = true;
-        String building = cmbBuilding.getSelectedItem().toString();
+
         int i = cmbBuilding.getSelectedIndex();
-        System.out.println(i);
-        Building b;
-        for(int j = 0; j <= i; j++){
-            b = dbm.getNextBuilding();
-            if(j==i){
-                buildingID = b.getID();
-                System.out.println(j);
-            }
-        }
-        System.out.println(buildingID);
+
+        //Setting the building ID based off the index
+        String[] ids = dbm.getAllBuildingIDs();
+        buildingID = ids[i];
+        
+        //Adding all data to the room
         r.setCapacity(capacity);
         r.setRoomNum(number);
         r.setBuildingID(buildingID);
+        
+        //confirmation dialog
         int result = JOptionPane.showConfirmDialog((Component) null, "Classroom added would you like to create another classroom?",
         "alert", JOptionPane.YES_NO_OPTION);
+        System.out.println(result);
+        if(result == 0){
+            txtRoomNumber.setText("");
+            txtCapacity.setText("");
+            cmbType.setSelectedIndex(0);
+            cmbBuilding.setSelectedIndex(0);
+        }
+        else
+            this.dispose();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed

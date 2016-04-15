@@ -46,6 +46,7 @@ public class HomePage extends javax.swing.JFrame {
         btnViewClassrooms1.setMinimumSize(new java.awt.Dimension(75, 75));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Class-Planner");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Create"));
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 150));
@@ -250,8 +251,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnViewCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCoursesActionPerformed
         // TODO add your handling code here:
-        //ViewCourses n = new ViewCourses();
-        //n.setVisible(true);
+        ViewCourses n = new ViewCourses();
+        n.setVisible(true);
     }//GEN-LAST:event_btnViewCoursesActionPerformed
 
     private void btnViewBuildingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildingsActionPerformed
