@@ -250,8 +250,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnViewCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCoursesActionPerformed
         // TODO add your handling code here:
-        ViewCourses n = new ViewCourses();
-        n.setVisible(true);
+        //ViewCourses n = new ViewCourses();
+        //n.setVisible(true);
     }//GEN-LAST:event_btnViewCoursesActionPerformed
 
     private void btnViewBuildingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildingsActionPerformed

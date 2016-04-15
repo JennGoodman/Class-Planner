@@ -298,10 +298,10 @@ public class CreateCourse extends javax.swing.JFrame {
             days[4] = true;
         }
         
-        c.setName(Name);
+        c.setCourseName(Name);
         c.setCapacity(Capacity);
-        c.setFeatures(features);
-        c.setDays(days);
+        //c.setFeatures(features);
+        //c.setDays(days);
         c.setCourseNumber(CourseNumber);
     }//GEN-LAST:event_btnSubmitMouseClicked
 
