@@ -97,14 +97,39 @@ public class CreateCourse extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Meeting days"));
 
         ckbMonday.setText("Monday");
+        ckbMonday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbMondayStateChanged(evt);
+            }
+        });
 
         ckbTuesday.setText("Tuesday");
+        ckbTuesday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbTuesdayStateChanged(evt);
+            }
+        });
 
         ckbWednesday.setText("Wednesday");
+        ckbWednesday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbWednesdayStateChanged(evt);
+            }
+        });
 
         ckbThursday.setText("Thursday");
+        ckbThursday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbThursdayStateChanged(evt);
+            }
+        });
 
         ckbFriday.setText("Friday");
+        ckbFriday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbFridayStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -375,6 +400,71 @@ public class CreateCourse extends javax.swing.JFrame {
             cmbThirdPref.setEnabled(true);
         }
     }//GEN-LAST:event_ckbNoPrefrenceStateChanged
+
+    private void ckbMondayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbMondayStateChanged
+        // TODO add your handling code here:
+        boolean checked = ckbMonday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbWednesday.isSelected() && !ckbFriday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbMondayStateChanged
+
+    private void ckbTuesdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbTuesdayStateChanged
+        boolean checked = ckbTuesday.isSelected();
+        if(checked){
+            ckbMonday.setEnabled(false);
+            ckbWednesday.setEnabled(false);
+            ckbFriday.setEnabled(false);
+        }
+        else if(!checked && !ckbThursday.isSelected()){
+            ckbMonday.setEnabled(true);
+            ckbWednesday.setEnabled(true);
+            ckbFriday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbTuesdayStateChanged
+
+    private void ckbWednesdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbWednesdayStateChanged
+        boolean checked = ckbWednesday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbMonday.isSelected() && !ckbFriday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbWednesdayStateChanged
+
+    private void ckbThursdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbThursdayStateChanged
+        boolean checked = ckbThursday.isSelected();
+        if(checked){
+            ckbMonday.setEnabled(false);
+            ckbWednesday.setEnabled(false);
+            ckbFriday.setEnabled(false);
+        }
+        else if(!checked && !ckbTuesday.isSelected()){
+            ckbMonday.setEnabled(true);
+            ckbWednesday.setEnabled(true);
+            ckbFriday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbThursdayStateChanged
+
+    private void ckbFridayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbFridayStateChanged
+        boolean checked = ckbFriday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbMonday.isSelected() && !ckbWednesday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbFridayStateChanged
 
     /**
      * @param args the command line arguments

@@ -254,26 +254,41 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Monday"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ckbMondayStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbTuesday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tuesday"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ckbTuesdayStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbWednesday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Wednesday"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ckbWednesdayStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbThursday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Thursday"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ckbThursdayStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbFriday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Friday"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ckbFridayStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

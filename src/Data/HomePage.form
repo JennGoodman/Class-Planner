@@ -15,6 +15,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Class-Planner"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -119,7 +120,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnNewClass">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Create New Course"/>
+            <Property name="text" type="java.lang.String" value="New Course"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
@@ -131,7 +132,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNewClassroom">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Create New Classroom"/>
+            <Property name="text" type="java.lang.String" value="New Classroom"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
@@ -143,7 +144,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNewBuilding">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Create New Building"/>
+            <Property name="text" type="java.lang.String" value="New Building"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
@@ -155,7 +156,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNewSchedule">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Create New Schedule"/>
+            <Property name="text" type="java.lang.String" value="New Schedule"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[75, 75]"/>
