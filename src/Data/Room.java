@@ -145,7 +145,7 @@ public class Room {
      * @return rooms assigned building ID.
      */
     public String getBuildingID() {
-        return ID;
+        return buildingID;
     }
 
     /**
