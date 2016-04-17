@@ -4,21 +4,22 @@ package Data;
  * * @author Jenn
  */
 public class Testing {
+
     public static void main(String[] args) {
         DBManager dbm = new DBManager();
         Building bldg;
         Course crse;
-        bldg=dbm.getNextBuilding();
-        crse=dbm.getNextCourse();
+        bldg = dbm.getNextBuilding();
+        crse = dbm.getNextCourse();
         System.out.println("-- Building .toString() --");
         while (bldg != null) {
             System.out.println(bldg.toString());
-            bldg=dbm.getNextBuilding();
+            bldg = dbm.getNextBuilding();
         }
         System.out.println("-- Course .toString() --");
         while (crse != null) {
             System.out.println(crse.toString());
-            crse=dbm.getNextCourse();
+            crse = dbm.getNextCourse();
         }
         System.out.println("-- Get building table --");
         Object[][] tab = dbm.getBuildingTable();
@@ -56,6 +57,11 @@ public class Testing {
             System.out.print(", Preference 1: " + o[15]);
             System.out.print(", Preference 2: " + o[16]);
             System.out.println(", Preference 3: " + o[17]);
+        }
+        System.out.println("-- GetAllTesting --");
+        int[] features = {1,0,0};
+        for (Object course : dbm.getGeneralCourses("7", features)) {
+            System.out.println(course.toString());
         }
     }
 }
