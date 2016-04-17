@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Building class intended to be created and managed by DBManager.
  *
- * @author Jenn
+ * @author Jenn Goodman
  */
 public class Building {
 
@@ -25,7 +25,7 @@ public class Building {
     //</editor-fold>
 
     /**
-     * Default Constructor
+     * Constructor.
      *
      * @param d database connection object.
      */
@@ -34,7 +34,7 @@ public class Building {
     }
 
     /**
-     * Default Constructor
+     * Constructor.
      *
      * @param d database connection object.
      * @param id building id.
@@ -46,11 +46,11 @@ public class Building {
             statement = dbc.createStatement();
             if (id == null) {
                 statement.executeUpdate(
-                        "INSERT INTO building",
+                        "INSERT INTO building VALUES ()",
                         Statement.RETURN_GENERATED_KEYS);
                 result = statement.getGeneratedKeys();
                 if (result.next()) {
-                    ID = result.getString("BuildingID");
+                    ID = result.getString(1);
                 }
             } else {
                 ID = id;
@@ -86,7 +86,7 @@ public class Building {
     public boolean setName(String n) {
         name = n;
         try {
-            statement.executeUpdate("UPDATE course SET Name='" + n + "'");
+            statement.executeUpdate("UPDATE building SET Name='" + n + "' WHERE BuildingID=" + ID);
         } catch (SQLException e) {
             return report(e);
         }
@@ -102,7 +102,7 @@ public class Building {
         String[] ids;
         try {
             result = statement.executeQuery(
-                    "SELECT RoomID FROM room WHERE BuildingID='" + ID + "'");
+                    "SELECT RoomID FROM room WHERE BuildingID=" + ID);
             while (result.next()) {
                 myRooms.add(result.getString("RoomID"));
             }
@@ -124,7 +124,7 @@ public class Building {
         Room rm = null;
         try {
             result = statement.executeQuery(
-                    "SELECT RoomID FROM room WHERE BuildingID='" + ID + "'");
+                    "SELECT RoomID FROM room WHERE BuildingID=" + ID);
             for (int i = 0; i < roomIndex; i++) {
                 result.next();
             }
@@ -146,12 +146,15 @@ public class Building {
         return (roomIndex == 0);
     }
 
+    /**
+     * @return Building object as string of values.
+     */
     @Override
     public String toString() {
         ArrayList<String> rm = new ArrayList();
         try {
             result = statement.executeQuery(
-                    "SELECT RoomID FROM room WHERE BuildingID='" + ID + "'");
+                    "SELECT RoomID FROM room WHERE BuildingID=" + ID);
             while (result.next()) {
                 rm.add(result.getString("RoomID"));
             }
@@ -162,7 +165,7 @@ public class Building {
     }
 
     /**
-     * @param e SQLException to be reported
+     * @param e SQLException to be reported.
      * @return false in all cases.
      */
     private boolean report(SQLException e) {

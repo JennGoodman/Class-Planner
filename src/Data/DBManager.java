@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Class for connecting to a database and managing objects connected to the
- * records in the database
+ * records in the database.
  *
  * @author Jenn Goodman
  */
@@ -109,8 +109,8 @@ public class DBManager {
     public String[] getAllCourseIDs() {
         ArrayList<String> ids = new ArrayList();
         try {
-            result = statement.executeQuery("SELECT CourseID FROM course");
-            if (result.next()) {
+            result = statement.executeQuery("SELECT CourseID FROM course ORDER BY CourseID");
+            while (result.next()) {
                 ids.add(result.getString("CourseID"));
             }
             String[] star = new String[ids.size()];
@@ -131,7 +131,7 @@ public class DBManager {
     public String[] getAllBuildingIDs() {
         ArrayList<String> rm = new ArrayList();
         try {
-            result = statement.executeQuery("SELECT BuildingID FROM building");
+            result = statement.executeQuery("SELECT BuildingID FROM building ORDER BY BuildingID");
             while (result.next()) {
                 rm.add(result.getString("BuildingID"));
             }
@@ -152,8 +152,8 @@ public class DBManager {
     public String[] getAllRoomIDs() {
         ArrayList<String> ids = new ArrayList();
         try {
-            result = statement.executeQuery("SELECT RoomID FROM room");
-            if (result.next()) {
+            result = statement.executeQuery("SELECT RoomID FROM room ORDER BY RoomID");
+            while (result.next()) {
                 ids.add(result.getString("RoomID"));
             }
             String[] star = new String[ids.size()];

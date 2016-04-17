@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Course class intended to be created and managed by DBManager
+ * Course class intended to be created and managed by DBManager.
  *
  * @author Jenn Goodman
  */
@@ -31,19 +31,19 @@ public class Course {
     //</editor-fold>
 
     /**
-     * Default Constructor
+     * Constructor.
      *
-     * @param c MySQL database connection
+     * @param c MySQL database connection.
      */
     Course(Connection c) {
         this(c, null);
     }
 
     /**
-     * Complete Constructor
+     * Constructor.
      *
-     * @param c MySQL database connection string
-     * @param i row ID number to connect this object to
+     * @param c MySQL database connection string.
+     * @param i row ID number to connect this object to.
      */
     Course(Connection c, String i) {
         dbc = c;
@@ -54,11 +54,11 @@ public class Course {
             statement = dbc.createStatement();
             if (i == null) {
                 statement.executeUpdate(
-                        "INSERT INTO course",
+                        "INSERT INTO course VALUES ()",
                         Statement.RETURN_GENERATED_KEYS);
                 result = statement.getGeneratedKeys();
                 if (result.next()) {
-                    ID = result.getString("CourseID");
+                    ID = result.getString(1);
                 }
             } else {
                 ID = i;
@@ -92,27 +92,27 @@ public class Course {
     }
 
     /**
-     * @return unique ID number of course
+     * @return unique ID number of course.
      */
     public String getID() {
         return ID;
     }
 
     /**
-     * @return current course courseName
+     * @return current course courseName.
      */
     public String getCourseName() {
         return courseName;
     }
 
     /**
-     * @param n new courseName of course
-     * @return true if update successful
+     * @param n new courseName of course.
+     * @return true if update successful.
      */
     public boolean setCourseName(String n) {
-        courseName = n;
         try {
-            statement.executeUpdate("UPDATE course SET CourseName='" + n + "'");
+            statement.executeUpdate("UPDATE course SET CourseName='" + n + "' where CourseID='" + ID + "'");
+            courseName = n;
         } catch (SQLException e) {
             return report(e);
         }
@@ -120,24 +120,24 @@ public class Course {
     }
 
     /**
-     * @return current features
+     * @return current features.
      */
     public int[] getFeatures() {
         return features;
     }
 
     /**
-     * @param f list of features to be set true/false
-     * @return true if update successful
+     * @param f list of features to be set true/false.
+     * @return true if update successful.
      */
     public boolean setFeatures(int[] f) {
         if (f.length == features.length) {
-            features = f;
             try {
                 for (int x = 0; x < f.length; x++) {
                     statement.executeUpdate(
-                            "UPDATE course SET Feature" + (x + 1) + "='" + f[x] + "'");
+                            "UPDATE course SET Feature" + (x + 1) + "='" + f[x] + "' where CourseID='" + ID + "'");
                 }
+                features = f;
             } catch (SQLException e) {
                 return report(e);
             }
@@ -146,27 +146,29 @@ public class Course {
     }
 
     /**
-     * @return current days of course
+     * @return current days of course.
      */
     public int[] getDays() {
         return days;
     }
 
     /**
-     * @param d new list of days for course (Must be boolean[3])
-     * @return true if successful
+     * @param d new list of days for course (Must be boolean[3]).
+     * @return true if successful.
      */
     public boolean setDays(int[] d) {
         if (d.length == days.length) {
-            days = d;
             try {
-                statement.executeUpdate("UPDATE course SET Monday='" + d[0] + "'");
-                statement.executeUpdate("UPDATE course SET Tuesday='" + d[1] + "'");
-                statement.executeUpdate("UPDATE course SET Wednesday='" + d[2] + "'");
-                statement.executeUpdate("UPDATE course SET Thursday='" + d[3] + "'");
-                statement.executeUpdate("UPDATE course SET Friday='" + d[4] + "'");
-                statement.executeUpdate("UPDATE course SET Saturday='" + d[5] + "'");
-                statement.executeUpdate("UPDATE course SET Sunday='" + d[6] + "'");
+                statement.executeUpdate("UPDATE course SET" +
+                        " Monday='" + d[0] + 
+                        "', Tuesday='" + d[1] + 
+                        "', Wednesday='" + d[2] + 
+                        "', Thursday='" + d[3] + 
+                        "' ,Friday='" + d[4] + 
+                        "', Saturday='" + d[5] + 
+                        "', Sunday='" + d[6] + 
+                        "' where CourseID='" + ID + "'");
+                days = d;
             } catch (SQLException e) {
                 return report(e);
             }
@@ -175,24 +177,24 @@ public class Course {
     }
 
     /**
-     * @return current preferences
+     * @return current preferences.
      */
     public String[] getPreferences() {
         return preferences;
     }
 
     /**
-     * @param p new list of preferences (Must be array[3])
-     * @return true if update successful
+     * @param p new list of preferences (Must be array[3]).
+     * @return true if update successful.
      */
     public boolean setPreferences(String[] p) {
         if (p.length == preferences.length) {
-            preferences = p;
             try {
                 for (int x = 0; x < p.length; x++) {
                     statement.executeUpdate(
-                            "UPDATE course SET Preference" + (x + 1) + "='" + p[x] + "'");
+                            "UPDATE course SET Preference" + (x + 1) + "='" + p[x] + "' where CourseID='" + ID + "'");
                 }
+                preferences = p;
             } catch (SQLException e) {
                 return report(e);
             }
@@ -201,20 +203,20 @@ public class Course {
     }
 
     /**
-     * @return current course number
+     * @return current course number.
      */
     public String getCourseNumber() {
         return courseNumber;
     }
 
     /**
-     * @param c new course number
-     * @return true if update successful
+     * @param c new course number.
+     * @return true if update successful.
      */
     public boolean setCourseNumber(String c) {
-        courseNumber = c;
         try {
-            statement.executeUpdate("UPDATE course SET CourseNumber='" + c + "'");
+            statement.executeUpdate("UPDATE course SET CourseNumber='" + c + "' where CourseID='" + ID + "'");
+            courseNumber = c;
         } catch (SQLException e) {
             return report(e);
         }
@@ -222,20 +224,20 @@ public class Course {
     }
 
     /**
-     * @return current capacity of course
+     * @return current capacity of course.
      */
     public int getCapacity() {
         return capacity;
     }
 
     /**
-     * @param c new capacity of course
-     * @return true if update successful
+     * @param c new capacity of course.
+     * @return true if update successful.
      */
     public boolean setCapacity(int c) {
-        capacity = c;
         try {
-            statement.executeUpdate("UPDATE course SET Capacity='" + c + "'");
+            statement.executeUpdate("UPDATE course SET Capacity='" + c + "' where CourseID='" + ID + "'");
+            capacity = c;
         } catch (SQLException e) {
             return report(e);
         }
@@ -243,20 +245,20 @@ public class Course {
     }
 
     /**
-     * @return current type of course
+     * @return current type of course.
      */
     public String getType() {
         return type;
     }
 
     /**
-     * @param t type of course
-     * @return true if update successful
+     * @param t type of course.
+     * @return true if update successful.
      */
     public boolean setType(String t) {
-        type = t;
         try {
-            statement.executeUpdate("UPDATE course SET CourseNumber='" + t + "'");
+            statement.executeUpdate("UPDATE course SET CourseType='" + t + "' where CourseID='" + ID + "'");
+            type = t;
         } catch (SQLException e) {
             return report(e);
         }
@@ -264,7 +266,7 @@ public class Course {
     }
 
     /**
-     * @param e SQLException to be reported
+     * @param e SQLException to be reported.
      * @return false in all cases.
      */
     private boolean report(SQLException e) {
@@ -275,7 +277,7 @@ public class Course {
     }
 
     /**
-     * @return Course object as String.
+     * @return Course object as string of values.
      */
     @Override
     public String toString() {
