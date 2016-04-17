@@ -21,6 +21,20 @@ public class CreateClassroom extends javax.swing.JFrame {
      */
     public CreateClassroom() {
         initComponents();
+        
+        DBManager dbm = new DBManager();
+        Building b;
+        boolean valid = true;
+        
+        while(valid==true){
+            b = dbm.getNextBuilding();
+            if(b==null){
+                valid = false;
+            }
+            else{
+                cmbBuilding.addItem(b.getName());
+            }
+        }
     }
 
     /**
@@ -45,7 +59,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Create a Classroom");
+        setTitle("Create Classroom");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Classroom Information"));
@@ -65,8 +79,6 @@ public class CreateClassroom extends javax.swing.JFrame {
         jLabel4.setText("Building:");
 
         cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Standard Classroom", "Lecture Hall", "Laboratory" }));
-
-        cmbBuilding.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,6 +172,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         boolean features[] = new boolean[] {false, false, false};
         String number = txtRoomNumber.getText();
         String capacity = txtCapacity.getText();
+        String buildingID = "";
         
         String type = cmbType.getSelectedItem().toString();
         int t = 0;
@@ -175,20 +188,42 @@ public class CreateClassroom extends javax.swing.JFrame {
                 break;                
         }
         features[t] = true;
-        Object building = cmbBuilding.getSelectedItem();
+
+        int i = cmbBuilding.getSelectedIndex();
+
+        //Setting the building ID based off the index
+        String[] ids = dbm.getAllBuildingIDs();
+        buildingID = ids[i];
         
+        //Adding all data to the room
         r.setCapacity(capacity);
         r.setRoomNum(number);
+        r.setBuildingID(buildingID);
+        
+        //confirmation dialog
         int result = JOptionPane.showConfirmDialog((Component) null, "Classroom added would you like to create another classroom?",
         "alert", JOptionPane.YES_NO_OPTION);
+        System.out.println(result);
+        if(result == 0){
+            txtRoomNumber.setText("");
+            txtCapacity.setText("");
+            cmbType.setSelectedIndex(0);
+            cmbBuilding.setSelectedIndex(0);
+        }
+        else
+            this.dispose();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // TODO add your handling code here:
-        int result = JOptionPane.showConfirmDialog((Component) null, "Are you sure you want to return? Unsaved data will be lost.",
-        "alert", JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        if(txtRoomNumber.getText().equals("") && txtCapacity.getText().equals(""))
             this.dispose();
+        else{
+            int result = JOptionPane.showConfirmDialog((Component) null, "Are you sure you want to return? Unsaved data will be lost.",
+            "alert", JOptionPane.OK_CANCEL_OPTION);
+            if(result == 0){
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnReturnActionPerformed
 

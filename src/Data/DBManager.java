@@ -323,6 +323,9 @@ public class DBManager {
     public Object[] getGeneralCourses(String bid, int[] feat) {
         ArrayList<Course> c = new ArrayList();
         ArrayList<Course> r = new ArrayList();
+        boolean match;
+        Course course;
+        String[] prefs;
         int[] tfeat;
         int x;
         try {
@@ -331,15 +334,23 @@ public class DBManager {
             while (result.next()) {
                 c.add(new Course(dbc, result.getString("CourseID")));
             }
-            boolean match = true;
             while (!c.isEmpty()) {
-                tfeat = c.get(0).getFeatures();
+                match = false;
+                course = c.get(0);
+                tfeat = course.getFeatures();
+                prefs = course.getPreferences();
                 x = 0;
-                while (match && x < feat.length) {
+                for (x=0; x < 3; x++) {
+                    if(prefs[x].equalsIgnoreCase(bid)) {
+                        match = true;
+                    }
+                }
+                x = 0;
+                while (match && x < 3) {
                     match = (tfeat[x] == feat[x]);
                     x++;
                 }
-                if (r.contains(c.get(0)) || !match) {
+                if (r.contains(course) || !match) {
                     c.remove(0);
                 }
                 else {

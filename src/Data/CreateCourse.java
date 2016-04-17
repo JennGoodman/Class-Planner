@@ -21,6 +21,22 @@ public class CreateCourse extends javax.swing.JFrame {
      */
     public CreateCourse() {
         initComponents();
+        
+        DBManager dbm = new DBManager();
+        Building b;
+        boolean valid = true;
+        
+        while(valid==true){
+            b = dbm.getNextBuilding();
+            if(b==null){
+                valid = false;
+            }
+            else{
+                cmbFirstPref.addItem(b.getName());
+                cmbSecondPref.addItem(b.getName());
+                cmbThirdPref.addItem(b.getName());
+            }
+        }
     }
 
     /**
@@ -54,12 +70,14 @@ public class CreateCourse extends javax.swing.JFrame {
         cmbType = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         txtNumber = new javax.swing.JTextField();
+        ckbNoPrefrence = new javax.swing.JCheckBox();
         btnReturn = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Create Course");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Course Information"));
@@ -79,14 +97,39 @@ public class CreateCourse extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Meeting days"));
 
         ckbMonday.setText("Monday");
+        ckbMonday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbMondayStateChanged(evt);
+            }
+        });
 
         ckbTuesday.setText("Tuesday");
+        ckbTuesday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbTuesdayStateChanged(evt);
+            }
+        });
 
         ckbWednesday.setText("Wednesday");
+        ckbWednesday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbWednesdayStateChanged(evt);
+            }
+        });
 
         ckbThursday.setText("Thursday");
+        ckbThursday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbThursdayStateChanged(evt);
+            }
+        });
 
         ckbFriday.setText("Friday");
+        ckbFriday.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbFridayStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,8 +169,12 @@ public class CreateCourse extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Second Prefrence:");
 
+        cmbSecondPref.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Third Prefrence:");
+
+        cmbThirdPref.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None" }));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Type of Class:");
@@ -138,6 +185,14 @@ public class CreateCourse extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Course Number:");
 
+        ckbNoPrefrence.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ckbNoPrefrence.setText("No Prefrence");
+        ckbNoPrefrence.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckbNoPrefrenceStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,18 +201,6 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbFirstPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbSecondPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbThirdPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,7 +215,22 @@ public class CreateCourse extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNumber)
                             .addComponent(ftxtCapacity)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ckbNoPrefrence)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cmbFirstPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbSecondPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbThirdPref, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,9 +248,11 @@ public class CreateCourse extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ftxtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(ckbNoPrefrence)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cmbFirstPref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,44 +326,145 @@ public class CreateCourse extends javax.swing.JFrame {
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
         
         DBManager dbm = new DBManager();
-        boolean features[] = new boolean[] {false, false, false};
-        boolean days[] = new boolean[] {false, false, false, false, false, false, false};
+        int features[] = new int[] {0, 0, 0};
+        int days[] = new int[] {0, 0, 0, 0, 0, 0, 0};
         
         String Name = txtName.getText();
         
         int Capacity = Integer.parseInt(ftxtCapacity.getText());
-        String PrefOne = cmbFirstPref.getSelectedItem().toString();
-        String PrefTwo = cmbSecondPref.getSelectedItem().toString();
-        String PrefThree = cmbThirdPref.getSelectedItem().toString();
+        int PrefOne = cmbFirstPref.getSelectedIndex();
+        int PrefTwo = cmbSecondPref.getSelectedIndex();
+        int PrefThree = cmbThirdPref.getSelectedIndex();
         String CourseNumber = txtNumber.getText();
         int Type = cmbType.getSelectedIndex();
         
-        features[Type] = true;
+        features[Type] = 1;
         
         Course c = dbm.newCourse();
         
         if(ckbMonday.isSelected()){
-            days[0] = true;
+            days[0] = 1;
         }
         if(ckbTuesday.isSelected()){
-            days[1] = true;
+            days[1] = 1;
         }
         if(ckbWednesday.isSelected()){
-            days[2] = true;
+            days[2] = 1;
         }
         if(ckbThursday.isSelected()){
-            days[3] = true;
+            days[3] = 1;
         }
         if(ckbFriday.isSelected()){
-            days[4] = true;
+            days[4] = 1;
         }
+               
+        String[] ids = dbm.getAllBuildingIDs();
+        String[] Prefrences = new String[3];
         
-        c.setName(Name);
+        if(ckbNoPrefrence.isSelected()){
+            Prefrences[0] = null;
+            Prefrences[1] = null;
+            Prefrences[2] = null;
+        }        
+        
+        Prefrences[0] = ids[PrefOne];
+        if(PrefTwo == 0)
+            Prefrences[1] = null;
+        else        
+            Prefrences[1] = ids[PrefTwo - 1];
+        
+        if(PrefThree == 0)
+            Prefrences[2] = null;
+        else
+            Prefrences[2] = ids[PrefThree - 1];
+        
+        c.setCourseName(Name);
         c.setCapacity(Capacity);
         c.setFeatures(features);
         c.setDays(days);
         c.setCourseNumber(CourseNumber);
+        c.setPreferences(Prefrences);
     }//GEN-LAST:event_btnSubmitMouseClicked
+
+    private void ckbNoPrefrenceStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbNoPrefrenceStateChanged
+        // TODO add your handling code here:
+        boolean checked = ckbNoPrefrence.isSelected();
+        if(checked){
+            cmbFirstPref.setEnabled(false);
+            cmbSecondPref.setEnabled(false);
+            cmbThirdPref.setEnabled(false);
+        }
+        else{
+            cmbFirstPref.setEnabled(true);
+            cmbSecondPref.setEnabled(true);
+            cmbThirdPref.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbNoPrefrenceStateChanged
+
+    private void ckbMondayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbMondayStateChanged
+        // TODO add your handling code here:
+        boolean checked = ckbMonday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbWednesday.isSelected() && !ckbFriday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbMondayStateChanged
+
+    private void ckbTuesdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbTuesdayStateChanged
+        boolean checked = ckbTuesday.isSelected();
+        if(checked){
+            ckbMonday.setEnabled(false);
+            ckbWednesday.setEnabled(false);
+            ckbFriday.setEnabled(false);
+        }
+        else if(!checked && !ckbThursday.isSelected()){
+            ckbMonday.setEnabled(true);
+            ckbWednesday.setEnabled(true);
+            ckbFriday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbTuesdayStateChanged
+
+    private void ckbWednesdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbWednesdayStateChanged
+        boolean checked = ckbWednesday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbMonday.isSelected() && !ckbFriday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbWednesdayStateChanged
+
+    private void ckbThursdayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbThursdayStateChanged
+        boolean checked = ckbThursday.isSelected();
+        if(checked){
+            ckbMonday.setEnabled(false);
+            ckbWednesday.setEnabled(false);
+            ckbFriday.setEnabled(false);
+        }
+        else if(!checked && !ckbTuesday.isSelected()){
+            ckbMonday.setEnabled(true);
+            ckbWednesday.setEnabled(true);
+            ckbFriday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbThursdayStateChanged
+
+    private void ckbFridayStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbFridayStateChanged
+        boolean checked = ckbFriday.isSelected();
+        if(checked){
+            ckbTuesday.setEnabled(false);
+            ckbThursday.setEnabled(false);
+        }
+        else if(!checked && !ckbMonday.isSelected() && !ckbWednesday.isSelected()){
+            ckbTuesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+        }
+    }//GEN-LAST:event_ckbFridayStateChanged
 
     /**
      * @param args the command line arguments
@@ -345,6 +506,7 @@ public class CreateCourse extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmit;
     private javax.swing.JCheckBox ckbFriday;
     private javax.swing.JCheckBox ckbMonday;
+    private javax.swing.JCheckBox ckbNoPrefrence;
     private javax.swing.JCheckBox ckbThursday;
     private javax.swing.JCheckBox ckbTuesday;
     private javax.swing.JCheckBox ckbWednesday;

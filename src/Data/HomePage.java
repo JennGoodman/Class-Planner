@@ -46,11 +46,13 @@ public class HomePage extends javax.swing.JFrame {
         btnViewClassrooms1.setMinimumSize(new java.awt.Dimension(75, 75));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Class-Planner");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Create"));
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 150));
 
-        btnNewClass.setText("Create New Course");
+        btnNewClass.setText("New Course");
         btnNewClass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClass.setMinimumSize(new java.awt.Dimension(75, 75));
         btnNewClass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -59,7 +61,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        btnNewClassroom.setText("Create New Classroom");
+        btnNewClassroom.setText("New Classroom");
         btnNewClassroom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewClassroom.setMinimumSize(new java.awt.Dimension(75, 75));
         btnNewClassroom.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +70,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        btnNewBuilding.setText("Create New Building");
+        btnNewBuilding.setText("New Building");
         btnNewBuilding.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewBuilding.setMinimumSize(new java.awt.Dimension(75, 75));
         btnNewBuilding.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +79,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        btnNewSchedule.setText("Create New Schedule");
+        btnNewSchedule.setText("New Schedule");
         btnNewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewSchedule.setMinimumSize(new java.awt.Dimension(75, 75));
 

@@ -59,7 +59,7 @@ public class Testing {
             System.out.println(", Preference 3: " + o[17]);
         }
         System.out.println("-- GetAllTesting --");
-        int[] features = {1,0,0};
+        int[] features = {0,0,0};
         for (Object course : dbm.getGeneralCourses("7", features)) {
             System.out.println(course.toString());
         }

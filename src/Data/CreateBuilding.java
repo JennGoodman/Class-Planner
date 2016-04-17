@@ -1,6 +1,7 @@
 package Data;
 
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 
@@ -40,6 +41,7 @@ public class CreateBuilding extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Create Building");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Building Information"));
@@ -113,28 +115,40 @@ public class CreateBuilding extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        String name = txtName.getText();
-        DBManager dbm = new DBManager();
-        Building b = dbm.newBuilding();
-        
-        b.setName(name);
-        
-        int result = JOptionPane.showConfirmDialog((Component) null, "Building added but contains no rooms, would you like to add rooms now?",
-        "alert", JOptionPane.YES_NO_OPTION);
-        if(result == 0){
-            this.dispose();
+        if(txtName.getText().equals("")){
+            JOptionPane.showMessageDialog((Component) null, "Required fields missing! Unable to add to database.", "Required fields missing!", WIDTH, null);
+            jLabel1.setForeground(Color.red);
         }
         else{
-            txtName.setText("");
+            String name = txtName.getText();
+            DBManager dbm = new DBManager();
+            Building b = dbm.newBuilding();
+        
+            b.setName(name);
+        
+            int result = JOptionPane.showConfirmDialog((Component) null, "Building added but contains no rooms, would you like to add rooms now?",
+            "alert", JOptionPane.YES_NO_OPTION);
+            if(result == 0){
+                this.dispose();
+            }
+            else{
+                txtName.setText("");
+                jLabel1.setForeground(Color.black);
+            }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // TODO add your handling code here:
-        int result = JOptionPane.showConfirmDialog((Component) null, "Are you sure you want to return? Unsaved data will be lost.",
-        "alert", JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        if(txtName.getText().equals("")){
             this.dispose();
+        }
+        else{
+            int result = JOptionPane.showConfirmDialog((Component) null, "Are you sure you want to return? Unsaved data will be lost.",
+            "alert", JOptionPane.OK_CANCEL_OPTION);
+            if(result == 0){
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_btnReturnActionPerformed
 
