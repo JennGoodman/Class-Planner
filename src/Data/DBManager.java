@@ -3,6 +3,7 @@ package Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class DBManager {
     //<editor-fold defaultstate="collapsed" desc="Fields">
     public static final int NUM_FEATURES = 3;
     public static final int WEEKDAYS = 7;
+    public static final int NUM_PREFERENCES = 3;
 
     private String connection;
     private String username;
@@ -26,6 +28,7 @@ public class DBManager {
     private int currentCourse;
     private int currentBuilding;
     private int currentRoom;
+    private int currentScheduleRow;
 
     private Connection dbc;
     private Statement statement;
@@ -43,6 +46,7 @@ public class DBManager {
         currentCourse = 0;
         currentBuilding = 0;
         currentRoom = 0;
+        currentScheduleRow = 0;
         dbc = null;
 
         try {
@@ -200,19 +204,69 @@ public class DBManager {
             return null;
         }
     }
+    
+    /**
+     * @return Array of unique schedule names.
+     */
+    public String[] getScheduleNames() {
+        String[] names = null;
+        ArrayList<String> temp = new ArrayList();
+        try {
+            result = statement.executeQuery(
+                    "SELECT DISTINCT ScheduleName FROM schedule");
+            while (result.next()) {
+                temp.add(result.getString(1));
+            }
+            names = new String[temp.size()];
+            for(int x=0; x< names.length; x++) {
+                names[x] = temp.get(x);
+            }
+        }
+        catch (SQLException e) {
+            report(e);
+        }
+        return names;
+    }
+    
+    /**
+     * @param name name of schedule.
+     * @return Schedule object containing the current record.
+     */
+    public Schedule getNextSchedule(String name) {
+        try {
+            result = statement.executeQuery(
+                    "SELECT ScheduleID FROM schedule WHERE ScheduleName='" + name + "'");
+            for(int x=0; x <= currentScheduleRow; x++ ) {
+                result.next();
+            }
+            return new Schedule(dbc, result.getString(1));
+        }
+        catch (SQLException e) {
+            report(e);
+            return null;
+        }
+    }
 
     /**
      * @param column label of column to be listed.
      * @return array of values as a String[].
      */
     public String[] getBuildingNames(String column) {
+        String[] names = null;
+        ArrayList<String> temp = new ArrayList();
         try {
             result = statement.executeQuery("SELECT Name FROM building");
-            return (String[]) result.getArray("Name").getArray();
+            while(result.next()) {
+                temp.add(result.getString(1));
+            }
+            names = new String[temp.size()];
+            for (int x=0; x<names.length; x++) {
+                names[x] = temp.get(x);
+            }
         } catch (SQLException e) {
             report(e);
         }
-        return null;
+        return names;
     }
 
     /**
@@ -383,9 +437,16 @@ public class DBManager {
     public void resetRoomIndex() {
         currentRoom = 0;
     }
+    
+    /**
+     * Reset schedule row index to 0.
+     */
+    public void resetScheduleRowIndex() {
+        currentScheduleRow = 0;
+    }
 
     /**
-     * @param e SQLException to be reported
+     * @param e SQLException to be reported.
      * @return false in all cases.
      */
     private boolean report(SQLException e) {
