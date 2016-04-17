@@ -41,12 +41,12 @@ public class Room {
     Room(Connection d, String id) {
         features = new int[DBManager.NUM_FEATURES];
         dbc = d;
-        ID = id;
         try {
             statement = dbc.createStatement();
             if (id == null) {
                 statement.executeUpdate(
-                        "INSERT INTO room VALUES ()", Statement.RETURN_GENERATED_KEYS);
+                        "INSERT INTO room VALUES ()", 
+                        Statement.RETURN_GENERATED_KEYS);
                 result = statement.getGeneratedKeys();
                 if (result.next()) {
                     ID = result.getString(1);
@@ -56,7 +56,7 @@ public class Room {
             }
             result = statement.executeQuery(
                     "SELECT * FROM room WHERE RoomID=" + ID);
-            while (result.next()) {
+            if (result.next()) {
                 type = result.getString("ClassType");
                 capacity = result.getInt("Capacity");
                 number = result.getString("RoomNum");

@@ -1,5 +1,6 @@
 package Data;
 
+import java.sql.Connection;
 import java.util.Random;
 
 /**
@@ -9,18 +10,21 @@ public class Testing {
 
     public static void main(String[] args) {
         DBManager dbm = new DBManager();
-        Building bld;
-        Course crs;
-        Room rm;
-        while ((bld = dbm.getNextBuilding()) != null) {
-            System.out.println(bld);
+        
+        String[] names = dbm.getScheduleNames();
+        for (String name : names) {
+            System.out.println(dbm.getNextSchedule(name));
         }
-        while ((rm = dbm.getNextRoom()) != null) {
-            System.out.println(rm);
-        }
-        while ((crs = dbm.getNextCourse()) != null) {
-            System.out.println(crs);
-        }
+        
+//        while ((bld = dbm.getNextBuilding()) != null) {
+//            System.out.println(bld);
+//        }
+//        while ((rm = dbm.getNextRoom()) != null) {
+//            System.out.println(rm);
+//        }
+//        while ((crs = dbm.getNextCourse()) != null) {
+//            System.out.println(crs);
+//        }
         
         // Create Dummy Rooms
 //        Random rand = new Random();

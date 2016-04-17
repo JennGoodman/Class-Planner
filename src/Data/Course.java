@@ -47,9 +47,9 @@ public class Course {
      */
     Course(Connection c, String i) {
         dbc = c;
-        days = new int[7];
-        features = new int[3];
-        preferences = new String[3];
+        days = new int[DBManager.WEEKDAYS];
+        features = new int[DBManager.NUM_FEATURES];
+        preferences = new String[DBManager.NUM_PREFERENCES];
         try {
             statement = dbc.createStatement();
             if (i == null) {
