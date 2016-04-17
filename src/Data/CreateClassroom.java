@@ -171,7 +171,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         
         boolean features[] = new boolean[] {false, false, false};
         String number = txtRoomNumber.getText();
-        String capacity = txtCapacity.getText();
+        int capacity = Integer.parseInt(txtCapacity.getText());
         String buildingID = "";
         
         String type = cmbType.getSelectedItem().toString();

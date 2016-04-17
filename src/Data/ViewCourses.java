@@ -34,8 +34,6 @@ public class ViewCourses extends javax.swing.JFrame {
                 int[] days = c.getDays();
                 String day = "";
                 for(int i = 0; i<days.length; i++){
-                    System.out.println(i);
-                    System.out.println(days[i]);
                     if(days[i]==1){
                         switch(i){
                             case 0:
@@ -63,7 +61,7 @@ public class ViewCourses extends javax.swing.JFrame {
                 else
                     type = "Laboratory";
                         
-                Object[] row = {c.getID(), c.getCourseName(), type, c.getCapacity(), day};
+                Object[] row = {c.getID(), c.getCourseName(), c.getCourseNumber(), type, c.getCapacity(), day};
                 model.addRow(row);
             }
         }
@@ -88,11 +86,11 @@ public class ViewCourses extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Course ID", "Course Name", "Course Type", "Capacity", "Days"
+                "Course ID", "Course Name", "Course Number", "Course Type", "Capacity", "Days"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

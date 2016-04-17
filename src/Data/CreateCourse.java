@@ -336,9 +336,8 @@ public class CreateCourse extends javax.swing.JFrame {
         int PrefTwo = cmbSecondPref.getSelectedIndex();
         int PrefThree = cmbThirdPref.getSelectedIndex();
         String CourseNumber = txtNumber.getText();
-        int Type = cmbType.getSelectedIndex();
+        String Type = Integer.toString(cmbType.getSelectedIndex());
         
-        features[Type] = 1;
         
         Course c = dbm.newCourse();
         
@@ -381,9 +380,38 @@ public class CreateCourse extends javax.swing.JFrame {
         c.setCourseName(Name);
         c.setCapacity(Capacity);
         c.setFeatures(features);
+        c.setType(Type);
         c.setDays(days);
         c.setCourseNumber(CourseNumber);
         c.setPreferences(Prefrences);
+        
+        int result = JOptionPane.showConfirmDialog((Component) null, "Course added would you like to create another course?",
+        "alert", JOptionPane.YES_NO_OPTION);
+        System.out.println(result);
+        if(result == 0){
+            ftxtCapacity.setText("");
+            txtName.setText("");
+            txtNumber.setText("");
+            
+            cmbFirstPref.setSelectedIndex(0);
+            cmbSecondPref.setSelectedIndex(0);
+            cmbThirdPref.setSelectedIndex(0);
+            
+            ckbMonday.setSelected(false);
+            ckbTuesday.setSelected(false);
+            ckbWednesday.setSelected(false);
+            ckbThursday.setSelected(false);
+            ckbFriday.setSelected(false);
+            
+            ckbMonday.setEnabled(true);
+            ckbTuesday.setEnabled(true);
+            ckbWednesday.setEnabled(true);
+            ckbThursday.setEnabled(true);
+            ckbFriday.setEnabled(true);
+        }
+        else
+            this.dispose();
+
     }//GEN-LAST:event_btnSubmitMouseClicked
 
     private void ckbNoPrefrenceStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckbNoPrefrenceStateChanged
