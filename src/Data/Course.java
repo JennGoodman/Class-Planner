@@ -159,15 +159,15 @@ public class Course {
     public boolean setDays(int[] d) {
         if (d.length == days.length) {
             try {
-                statement.executeUpdate("UPDATE course SET" +
-                        " Monday='" + d[0] + 
-                        "', Tuesday='" + d[1] + 
-                        "', Wednesday='" + d[2] + 
-                        "', Thursday='" + d[3] + 
-                        "' ,Friday='" + d[4] + 
-                        "', Saturday='" + d[5] + 
-                        "', Sunday='" + d[6] + 
-                        "' where CourseID='" + ID + "'");
+                statement.executeUpdate("UPDATE course SET"
+                        + " Monday='" + d[0]
+                        + "', Tuesday='" + d[1]
+                        + "', Wednesday='" + d[2]
+                        + "', Thursday='" + d[3]
+                        + "' ,Friday='" + d[4]
+                        + "', Saturday='" + d[5]
+                        + "', Sunday='" + d[6]
+                        + "' where CourseID='" + ID + "'");
                 days = d;
             } catch (SQLException e) {
                 return report(e);
@@ -311,7 +311,7 @@ public class Course {
         }
         for (int x = 0; x < features.length; x++) {
             sb.append(", Feature");
-            sb.append(x+1);
+            sb.append(x + 1);
             if (features[x] == 1) {
                 sb.append(": Yes");
             } else {
@@ -320,7 +320,7 @@ public class Course {
         }
         for (int x = 0; x < preferences.length; x++) {
             sb.append(", Preference");
-            sb.append(x+1);
+            sb.append(x + 1);
             sb.append(": ");
             sb.append(preferences[x]);
         }

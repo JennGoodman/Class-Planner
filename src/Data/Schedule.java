@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 /**
  * Schedule class intended to be created and managed by DBManager.
- * 
+ *
  * @author Jenn
  */
 public class Schedule {
@@ -17,7 +17,7 @@ public class Schedule {
     private Connection dbc;
     private Statement s;
     private ResultSet r;
-    
+
     private String sID;
     private String sName;
     private int sScore;
@@ -42,16 +42,16 @@ public class Schedule {
 
     /**
      * Constructor.
-     * 
+     *
      * @param d database connection.
      */
     Schedule(Connection d) {
         this(d, null);
     }
-    
+
     /**
      * Constructor.
-     * 
+     *
      * @param d MySQL database connection string.
      * @param id schedule ID number for the record row.
      */
@@ -61,19 +61,18 @@ public class Schedule {
         cPrefs = new String[DBManager.NUM_PREFERENCES];
         cFeat = new int[DBManager.NUM_FEATURES];
         rFeat = new int[DBManager.NUM_FEATURES];
-                
+
         try {
             s = dbc.createStatement();
             if (id == null) {
                 s.executeUpdate(
-                        "INSERT INTO schedule values()", 
+                        "INSERT INTO schedule values()",
                         Statement.RETURN_GENERATED_KEYS);
                 r = s.getGeneratedKeys();
                 if (r.next()) {
                     sID = r.getString(1);
                 }
-            }
-            else {
+            } else {
                 sID = id;
             }
             r = s.executeQuery(
@@ -111,116 +110,115 @@ public class Schedule {
                 rFeat[1] = r.getInt(31);
                 rFeat[2] = r.getInt(32);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             report(e);
         }
     }
-    
+
     public String getScheduleID() {
         return sID;
     }
-    
+
     public String getScheduleName() {
         return sName;
     }
-    
+
     public void setScheduleName(String n) {
         sName = n;
     }
-    
+
     public int getScheduleScore() {
         return sScore;
     }
-    
+
     public void setScheduleScore(int s) {
         sScore = s;
     }
-    
+
     public Date getScheduleCreationDate() {
         return sCreationDate;
     }
-    
+
     public void setScheduleCreationDate(Date d) {
         sCreationDate = d;
     }
-    
+
     public Date getScheduleStart() {
         return sStart;
     }
-    
+
     public void setScheduleStart(Date d) {
         sStart = d;
     }
-    
+
     public Date getScheduleEnd() {
         return sEnd;
     }
-    
+
     public void setScheduleEnd(Date d) {
         sEnd = d;
     }
-    
+
     public String getCourseID() {
         return cID;
     }
-    
+
     public void setCourseID(String c) {
         cID = c;
     }
-    
+
     public String getCourseNumber() {
         return cNumber;
     }
-    
+
     public void setCourseNumber(String n) {
         cNumber = n;
     }
-    
+
     public String getCourseType() {
         return cType;
     }
-    
+
     public void setCourseType(String t) {
         cType = t;
     }
-    
+
     public int getCourseCapacity() {
         return cCapacity;
     }
-    
+
     public void setCourseCapacity(int c) {
         cCapacity = c;
     }
-    
+
     public int[] getDays() {
         return days;
     }
-    
+
     public boolean setDays(int[] d) {
-        if(d.length == days.length) {
+        if (d.length == days.length) {
             days = d;
             return true;
         }
         return false;
     }
-    
+
     public int[] getCourseFeatures() {
         return cFeat;
     }
-    
+
     public boolean setCourseFeatures(int[] f) {
-        if(f.length == cFeat.length) {
+        if (f.length == cFeat.length) {
             cFeat = f;
             return true;
         }
         return false;
     }
-    
+
     public String[] getCoursePreferences() {
         return cPrefs;
     }
-    
+
     public boolean setCoursePreferences(String[] p) {
         if (p.length == cPrefs.length) {
             cPrefs = p;
@@ -228,59 +226,59 @@ public class Schedule {
         }
         return false;
     }
-    
+
     public String getBuildingID() {
         return bID;
     }
-    
+
     public void setBuildingID(String b) {
         bID = b;
     }
-    
+
     public String getBuildingName() {
         return bName;
     }
-    
+
     public void setBuildingName(String n) {
         bName = n;
     }
-    
+
     public String getRoomID() {
         return rID;
     }
-    
+
     public void setRoomID(String r) {
         rID = r;
     }
-    
+
     public String getRoomType() {
         return rType;
     }
-    
+
     public void setRoomType(String t) {
         rType = t;
     }
-    
+
     public int getRoomCapacity() {
         return rCapacity;
     }
-    
+
     public void setRoomCapacity(int c) {
         rCapacity = c;
     }
-    
+
     public String getRoomNumber() {
         return rNumber;
     }
-    
+
     public void setRoomNumber(String n) {
         rNumber = n;
     }
-    
+
     public int[] getRoomFeatures() {
         return rFeat;
     }
-    
+
     public boolean setRoomFeatures(int[] f) {
         if (f.length == rFeat.length) {
             rFeat = f;
@@ -288,7 +286,7 @@ public class Schedule {
         }
         return false;
     }
-    
+
     public boolean updateDB() {
         try {
             s.executeUpdate("UPDATE schedule SET "
@@ -323,13 +321,12 @@ public class Schedule {
                     + "RoomFeature1=" + rFeat[0]
                     + "RoomFeature2=" + rFeat[1]
                     + "RoomFeature3=" + rFeat[2]);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             return report(e);
         }
         return true;
     }
-    
+
     /**
      * @return Schedule object as string of values.
      */
@@ -338,7 +335,7 @@ public class Schedule {
         StringBuilder sb = new StringBuilder();
         String[] d = {"M", "T", "W", "Th", "F", "Sat", "Sun"};
         boolean dash = false;
-        
+
         sb.append("Schedule ID: ");
         sb.append(sID);
         sb.append(", Schedule Name: ");
@@ -373,7 +370,7 @@ public class Schedule {
         }
         for (int x = 0; x < cFeat.length; x++) {
             sb.append(", Feature");
-            sb.append(x+1);
+            sb.append(x + 1);
             if (cFeat[x] == 1) {
                 sb.append(": Yes");
             } else {
@@ -382,7 +379,7 @@ public class Schedule {
         }
         for (int x = 0; x < cPrefs.length; x++) {
             sb.append(", Course Preference");
-            sb.append(x+1);
+            sb.append(x + 1);
             sb.append(": ");
             sb.append(cPrefs[x]);
         }
@@ -400,7 +397,7 @@ public class Schedule {
         sb.append(rNumber);
         for (int x = 0; x < rFeat.length; x++) {
             sb.append(", Feature");
-            sb.append(x+1);
+            sb.append(x + 1);
             if (rFeat[x] == 1) {
                 sb.append(": Yes");
             } else {
@@ -409,7 +406,7 @@ public class Schedule {
         }
         return sb.toString();
     }
-    
+
     /**
      * @param e SQLException to be reported.
      * @return false in all cases.
