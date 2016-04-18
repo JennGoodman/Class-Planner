@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 /**
  * Room class intended to be created and managed by DBManager.
- * 
+ *
  * @author Jenn Goodman
  */
 public class Room {
@@ -22,19 +22,22 @@ public class Room {
     private String number;
     private String buildingID;
     private int capacity;
-    
+
     private int[] features;
     //</editor-fold>
 
     /**
      * Constructor.
-     * @param d 
+     *
+     * @param d
      */
     Room(Connection d) {
         this(d, null);
     }
+
     /**
      * Constructor.
+     *
      * @param d database connection agent.
      * @param id room id.
      */
@@ -45,7 +48,7 @@ public class Room {
             statement = dbc.createStatement();
             if (id == null) {
                 statement.executeUpdate(
-                        "INSERT INTO room VALUES ()", 
+                        "INSERT INTO room VALUES ()",
                         Statement.RETURN_GENERATED_KEYS);
                 result = statement.getGeneratedKeys();
                 if (result.next()) {
@@ -64,7 +67,7 @@ public class Room {
                 for (int f = 0; f < 3; f++) {
                     features[f] = result.getInt("Feature" + (f + 1));
                 }
-            }   
+            }
         } catch (SQLException e) {
             report(e);
         }
@@ -127,7 +130,7 @@ public class Room {
     }
 
     /**
-     * 
+     *
      * @param c new room capacity.
      * @return true if successful.
      */
@@ -194,7 +197,7 @@ public class Room {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("Room ID: ");
         sb.append(ID);
         sb.append(", Type: ");
@@ -207,14 +210,14 @@ public class Room {
         sb.append(buildingID);
         for (int x = 0; x < features.length; x++) {
             sb.append(", Feature");
-            sb.append(x+1);
+            sb.append(x + 1);
             if (features[x] == 1) {
                 sb.append(": Yes");
             } else {
                 sb.append(": No");
             }
         }
-        
+
         return sb.toString();
     }
 

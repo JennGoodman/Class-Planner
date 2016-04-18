@@ -204,7 +204,7 @@ public class DBManager {
             return null;
         }
     }
-    
+
     /**
      * @return Array of unique schedule names.
      */
@@ -218,16 +218,15 @@ public class DBManager {
                 temp.add(result.getString(1));
             }
             names = new String[temp.size()];
-            for(int x=0; x< names.length; x++) {
+            for (int x = 0; x < names.length; x++) {
                 names[x] = temp.get(x);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             report(e);
         }
         return names;
     }
-    
+
     /**
      * @param name name of schedule.
      * @return Schedule object containing the current record.
@@ -236,12 +235,11 @@ public class DBManager {
         try {
             result = statement.executeQuery(
                     "SELECT ScheduleID FROM schedule WHERE ScheduleName='" + name + "'");
-            for(int x=0; x <= currentScheduleRow; x++ ) {
+            for (int x = 0; x <= currentScheduleRow; x++) {
                 result.next();
             }
             return new Schedule(dbc, result.getString(1));
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             report(e);
             return null;
         }
@@ -256,11 +254,11 @@ public class DBManager {
         ArrayList<String> temp = new ArrayList();
         try {
             result = statement.executeQuery("SELECT Name FROM building");
-            while(result.next()) {
+            while (result.next()) {
                 temp.add(result.getString(1));
             }
             names = new String[temp.size()];
-            for (int x=0; x<names.length; x++) {
+            for (int x = 0; x < names.length; x++) {
                 names[x] = temp.get(x);
             }
         } catch (SQLException e) {
@@ -365,12 +363,13 @@ public class DBManager {
         }
         return null;
     }
-    
+
     /**
      * Returns an array of non-featured Courses for a specified BuildingID
      * sorted by their capacity.
-     * 
+     *
      * Features must be a 3 element array of 0's and 1's.
+     *
      * @param bid BuildingID preference of Courses to include.
      * @return Array of Course objects.
      */
@@ -394,8 +393,8 @@ public class DBManager {
                 tfeat = course.getFeatures();
                 prefs = course.getPreferences();
                 x = 0;
-                for (x=0; x < 3; x++) {
-                    if(prefs[x].equalsIgnoreCase(bid)) {
+                for (x = 0; x < 3; x++) {
+                    if (prefs[x].equalsIgnoreCase(bid)) {
                         match = true;
                     }
                 }
@@ -406,8 +405,7 @@ public class DBManager {
                 }
                 if (r.contains(course) || !match) {
                     c.remove(0);
-                }
-                else {
+                } else {
                     r.add(c.remove(0));
                 }
             }
@@ -437,7 +435,7 @@ public class DBManager {
     public void resetRoomIndex() {
         currentRoom = 0;
     }
-    
+
     /**
      * Reset schedule row index to 0.
      */
