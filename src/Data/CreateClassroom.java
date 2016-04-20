@@ -171,23 +171,10 @@ public class CreateClassroom extends javax.swing.JFrame {
         
         boolean features[] = new boolean[] {false, false, false};
         String number = txtRoomNumber.getText();
-        String capacity = txtCapacity.getText();
+        int capacity = Integer.parseInt(txtCapacity.getText());
         String buildingID = "";
         
-        String type = cmbType.getSelectedItem().toString();
-        int t = 0;
-        switch(type){
-            case "Standard Classroom":
-                t = 0;
-                break;
-            case "Lecture Hall":
-                t = 1;
-                break;
-            case "Laboratory":
-                t = 2;
-                break;                
-        }
-        features[t] = true;
+        String type = Integer.toString(cmbType.getSelectedIndex());
 
         int i = cmbBuilding.getSelectedIndex();
 
@@ -199,6 +186,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         r.setCapacity(capacity);
         r.setRoomNum(number);
         r.setBuildingID(buildingID);
+        r.setType(type);
         
         //confirmation dialog
         int result = JOptionPane.showConfirmDialog((Component) null, "Classroom added would you like to create another classroom?",

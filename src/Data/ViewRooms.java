@@ -24,8 +24,9 @@ public class ViewRooms extends javax.swing.JFrame {
         boolean valid = true;        
         dbm.resetRoomIndex();
         
+        Room r;
         while(valid == true){
-            Room r = dbm.getNextRoom();
+            r = dbm.getNextRoom();
             if(r!=null){
                 Object[] row = {r.getID(), r.getRoomNum(), r.getCapacity(), r.getType(), r.getBuildingID()};
                 model.addRow(row);
