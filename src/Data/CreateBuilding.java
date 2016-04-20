@@ -22,6 +22,7 @@ public class CreateBuilding extends javax.swing.JFrame {
      */
     public CreateBuilding() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
 

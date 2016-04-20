@@ -17,6 +17,7 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -133,6 +134,11 @@ public class HomePage extends javax.swing.JFrame {
         btnViewSchedule.setText("View Schedule");
         btnViewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewSchedule.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewScheduleActionPerformed(evt);
+            }
+        });
 
         btnViewClassrooms2.setText("View Classrooms");
         btnViewClassrooms2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -265,6 +271,12 @@ public class HomePage extends javax.swing.JFrame {
         ViewRooms n = new ViewRooms();
         n.setVisible(true);
     }//GEN-LAST:event_btnViewClassrooms2ActionPerformed
+
+    private void btnViewScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewScheduleActionPerformed
+        // TODO add your handling code here:
+        ViewSchedule n = new ViewSchedule();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnViewScheduleActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,6 +22,8 @@ public class CreateCourse extends javax.swing.JFrame {
     public CreateCourse() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         DBManager dbm = new DBManager();
         Building b;
         boolean valid = true;

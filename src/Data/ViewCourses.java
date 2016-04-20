@@ -19,6 +19,8 @@ public class ViewCourses extends javax.swing.JFrame {
     public ViewCourses() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DBManager dbm = new DBManager();
         boolean valid = true;

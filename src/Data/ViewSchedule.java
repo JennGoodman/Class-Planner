@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Patrick
  */
-public class ViewRooms extends javax.swing.JFrame {
+public class ViewSchedule extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewRooms
+     * Creates new form ViewSchedule
      */
-    public ViewRooms() {
+    public ViewSchedule() {
         initComponents();
         
         setLocationRelativeTo(null);
@@ -24,18 +24,27 @@ public class ViewRooms extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DBManager dbm = new DBManager();
         boolean valid = true;        
-        dbm.resetRoomIndex();
         
-        Room r;
-        while(valid == true){
-            r = dbm.getNextRoom();
-            if(r!=null){
-                Object[] row = {r.getID(), r.getRoomNum(), r.getCapacity(), r.getType(), r.getBuildingID()};
+        String names[] = dbm.getScheduleNames();
+        Schedule s;
+        
+        System.out.println(names[0]);
+        while(valid==true){
+            s = dbm.getNextSchedule(names[0]);
+            if(s!=null){
+                System.out.println("test");
+                Object[] row = {s.getCourseNumber(), s.getScheduleStart(), s.getScheduleEnd(), s.getRoomNumber(), s.getBuildingName()};
+                System.out.println(s.getCourseNumber());
                 model.addRow(row);
+                
             }
-            else
+            else{
+                System.out.println("false");
                 valid = false;
+            }
+            
         }
+        
     }
 
     /**
@@ -50,26 +59,19 @@ public class ViewRooms extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Room ID", "Room Number", "Capacity", "Type", "Building ID"
+                "Course Name", "Start Time", "End Time", "Room Number", "Building"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -83,14 +85,14 @@ public class ViewRooms extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -114,20 +116,20 @@ public class ViewRooms extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewRooms().setVisible(true);
+                new ViewSchedule().setVisible(true);
             }
         });
     }

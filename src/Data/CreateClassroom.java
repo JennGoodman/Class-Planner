@@ -22,6 +22,8 @@ public class CreateClassroom extends javax.swing.JFrame {
     public CreateClassroom() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         DBManager dbm = new DBManager();
         Building b;
         boolean valid = true;
