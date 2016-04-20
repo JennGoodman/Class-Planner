@@ -236,13 +236,16 @@ public class DBManager {
             result = statement.executeQuery(
                     "SELECT ScheduleID FROM schedule WHERE ScheduleName='" + name + "'");
             for (int x = 0; x <= currentScheduleRow; x++) {
-                result.next();
+                if (!result.next()) {
+                    return null;
+                }
             }
+            currentScheduleRow++;
             return new Schedule(dbc, result.getString(1));
         } catch (SQLException e) {
             report(e);
-            return null;
         }
+        return null;
     }
 
     /**
