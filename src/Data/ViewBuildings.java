@@ -21,6 +21,8 @@ public class ViewBuildings extends javax.swing.JFrame {
     public ViewBuildings() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DBManager dbm = new DBManager();
         boolean valid = true;

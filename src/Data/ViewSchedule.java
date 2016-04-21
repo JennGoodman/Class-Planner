@@ -11,62 +11,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Patrick
  */
-public class ViewCourses extends javax.swing.JFrame {
+public class ViewSchedule extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewCourses
+     * Creates new form ViewSchedule
      */
-    public ViewCourses() {
+    public ViewSchedule() {
         initComponents();
         
         setLocationRelativeTo(null);
         
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        DBManager dbm = new DBManager();
-        boolean valid = true;
+        DBManager dbm = new DBManager();     
         
-        Course c;
-        
-        while(valid==true){
-            c = dbm.getNextCourse();
-            if(c == null){
-                valid = false;
-            }
-            else{
-                int[] days = c.getDays();
-                String day = "";
-                for(int i = 0; i<days.length; i++){
-                    if(days[i]==1){
-                        switch(i){
-                            case 0:
-                                day += "M ";
-                                break;
-                            case 1:
-                                day += "T ";
-                                break;
-                            case 2:
-                                day += "W ";
-                                break;
-                            case 3:
-                                day += "Th ";
-                                break;
-                            case 4:
-                                day += "F ";
-                        }
-                    }
-                }
-                String type;
-                if(c.getType().equals("0"))
-                    type = "Standard Class";
-                else if(c.getType().equals("1"))
-                    type = "Lecture Hall";
-                else
-                    type = "Laboratory";
-                        
-                Object[] row = {c.getID(), c.getCourseName(), c.getCourseNumber(), type, c.getCapacity(), day};
-                model.addRow(row);
-            }
+        String names[] = dbm.getScheduleNames();
+        for(int i = 0; i < names.length; i++){
+            cmbSchedules.addItem(names[i]);
         }
+        
     }
 
     /**
@@ -81,8 +42,9 @@ public class ViewCourses extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnReturn = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        cmbSchedules = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,11 +53,11 @@ public class ViewCourses extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Course ID", "Course Name", "Course Number", "Course Type", "Capacity", "Days"
+                "Course Name", "Start Time", "End Time", "Room Number", "Building"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -105,15 +67,22 @@ public class ViewCourses extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnReturn.setText("Return");
+        btnReturn.setToolTipText("");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnActionPerformed(evt);
             }
         });
 
-        btnEdit.setText("Edit");
+        jLabel1.setText("Select a schedule to view");
 
-        btnDelete.setText("Delete");
+        btnSubmit.setText("Submit");
+        btnSubmit.setToolTipText("");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,25 +91,29 @@ public class ViewCourses extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -151,6 +124,34 @@ public class ViewCourses extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DBManager dbm = new DBManager();
+        boolean valid = true;
+        
+        int entries =model.getRowCount();
+        for(int i = 0; i < entries; i++){
+            model.removeRow(0);
+        }
+        String name = cmbSchedules.getSelectedItem().toString();
+        
+        Schedule s;
+        
+        while(valid==true){
+            s = dbm.getNextSchedule(name);
+            if(s!=null){
+                Object[] row = {s.getCourseNumber(), s.getScheduleStart(), s.getScheduleEnd(), s.getRoomNumber(), s.getBuildingName()};
+                model.addRow(row);
+                
+            }
+            else{
+                valid = false;
+            }
+            
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,28 +170,29 @@ public class ViewCourses extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSchedule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewCourses().setVisible(true);
+                new ViewSchedule().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox cmbSchedules;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

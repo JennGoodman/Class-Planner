@@ -17,6 +17,7 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -82,6 +83,11 @@ public class HomePage extends javax.swing.JFrame {
         btnNewSchedule.setText("New Schedule");
         btnNewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNewSchedule.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnNewSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewScheduleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,6 +139,11 @@ public class HomePage extends javax.swing.JFrame {
         btnViewSchedule.setText("View Schedule");
         btnViewSchedule.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViewSchedule.setMinimumSize(new java.awt.Dimension(75, 75));
+        btnViewSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewScheduleActionPerformed(evt);
+            }
+        });
 
         btnViewClassrooms2.setText("View Classrooms");
         btnViewClassrooms2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -265,6 +276,17 @@ public class HomePage extends javax.swing.JFrame {
         ViewRooms n = new ViewRooms();
         n.setVisible(true);
     }//GEN-LAST:event_btnViewClassrooms2ActionPerformed
+
+    private void btnViewScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewScheduleActionPerformed
+        // TODO add your handling code here:
+        ViewSchedule n = new ViewSchedule();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnViewScheduleActionPerformed
+
+    private void btnNewScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewScheduleActionPerformed
+        CreateSchedule n = new CreateSchedule();
+        n.setVisible(true);
+    }//GEN-LAST:event_btnNewScheduleActionPerformed
 
     /**
      * @param args the command line arguments

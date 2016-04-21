@@ -19,6 +19,8 @@ public class ViewRooms extends javax.swing.JFrame {
     public ViewRooms() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DBManager dbm = new DBManager();
         boolean valid = true;        
