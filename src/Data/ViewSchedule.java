@@ -21,28 +21,11 @@ public class ViewSchedule extends javax.swing.JFrame {
         
         setLocationRelativeTo(null);
         
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        DBManager dbm = new DBManager();
-        boolean valid = true;        
+        DBManager dbm = new DBManager();     
         
         String names[] = dbm.getScheduleNames();
-        Schedule s;
-        
-        System.out.println(names[0]);
-        while(valid==true){
-            s = dbm.getNextSchedule(names[0]);
-            if(s!=null){
-                System.out.println("test");
-                Object[] row = {s.getCourseNumber(), s.getScheduleStart(), s.getScheduleEnd(), s.getRoomNumber(), s.getBuildingName()};
-                System.out.println(s.getCourseNumber());
-                model.addRow(row);
-                
-            }
-            else{
-                System.out.println("false");
-                valid = false;
-            }
-            
+        for(int i = 0; i < names.length; i++){
+            cmbSchedules.addItem(names[i]);
         }
         
     }
@@ -58,8 +41,12 @@ public class ViewSchedule extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnReturn = new javax.swing.JButton();
+        cmbSchedules = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        btnSubmit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,13 +66,41 @@ public class ViewSchedule extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btnReturn.setText("Return");
+        btnReturn.setToolTipText("");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Select a schedule to view");
+
+        btnSubmit.setText("Submit");
+        btnSubmit.setToolTipText("");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -93,11 +108,50 @@ public class ViewSchedule extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DBManager dbm = new DBManager();
+        boolean valid = true;
+        
+        int entries =model.getRowCount();
+        for(int i = 0; i < entries; i++){
+            model.removeRow(0);
+        }
+        String name = cmbSchedules.getSelectedItem().toString();
+        
+        Schedule s;
+        
+        while(valid==true){
+            s = dbm.getNextSchedule(name);
+            if(s!=null){
+                Object[] row = {s.getCourseNumber(), s.getScheduleStart(), s.getScheduleEnd(), s.getRoomNumber(), s.getBuildingName()};
+                model.addRow(row);
+                
+            }
+            else{
+                valid = false;
+            }
+            
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +189,10 @@ public class ViewSchedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox cmbSchedules;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
