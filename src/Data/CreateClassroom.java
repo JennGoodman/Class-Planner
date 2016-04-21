@@ -192,7 +192,7 @@ public class CreateClassroom extends javax.swing.JFrame {
         
         //confirmation dialog
         int result = JOptionPane.showConfirmDialog((Component) null, "Classroom added would you like to create another classroom?",
-        "alert", JOptionPane.YES_NO_OPTION);
+        "Alert", JOptionPane.YES_NO_OPTION);
         System.out.println(result);
         if(result == 0){
             txtRoomNumber.setText("");

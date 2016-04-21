@@ -120,14 +120,24 @@ public class CreateSchedule extends javax.swing.JFrame {
         // TODO add your handling code here:
         DBManager dbm = new DBManager();
         String names[] = dbm.getScheduleNames();
-        Set<String> name = new HashSet<String>();
-        for(int i = 0; i < names.length; i++){
-            name.add(names[i]);
+        Set<String> name = new HashSet<>();
+        for (String name1 : names) {
+            name.add(name1);
         }
         if(name.contains(txtName.getText())){
-            JOptionPane.showMessageDialog((Component) null, "Schedule name has already been used. Please use another name.", "Name already used.", WIDTH, null);
+            JOptionPane.showMessageDialog((Component) null, "Schedule name " + txtName.getText() + " has already been used. Please use another name.", "Name already used.", WIDTH, null);
             jLabel1.setForeground(Color.red);
         }
+        else{
+            String inputName = txtName.getText(); //String to be used to name schedule
+            int result = JOptionPane.showConfirmDialog((Component) null, "The schedule generation process may take a long time and seem unresponsive. Do you want to create a schedule now?",
+            "Alert", JOptionPane.YES_NO_OPTION);
+            System.out.println(result);
+            if(result == 0){
+                //INSERT ALGORITHM HERE
+            }
+        }
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     /**
