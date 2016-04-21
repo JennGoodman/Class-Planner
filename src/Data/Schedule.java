@@ -115,86 +115,150 @@ public class Schedule {
         }
     }
 
+    /**
+     * @return current schedule id.
+     */
     public String getScheduleID() {
         return sID;
     }
 
+    /**
+     * @return current schedule name.
+     */
     public String getScheduleName() {
         return sName;
     }
 
+    /**
+     * @param n new schedule name.
+     */
     public void setScheduleName(String n) {
         sName = n;
     }
 
+    /**
+     * @return current schedule score.
+     */
     public int getScheduleScore() {
         return sScore;
     }
 
+    /**
+     * @param s new schedule score.
+     */
     public void setScheduleScore(int s) {
         sScore = s;
     }
 
+    /**
+     * @return current schedule creation date.
+     */
     public Date getScheduleCreationDate() {
         return sCreationDate;
     }
 
+    /**
+     * @param d new schedule creation date.
+     */
     public void setScheduleCreationDate(Date d) {
         sCreationDate = d;
     }
 
+    /**
+     * @return current schedule start date.
+     */
     public Date getScheduleStart() {
         return sStart;
     }
 
+    /**
+     * @param d new schedule start date.
+     */
     public void setScheduleStart(Date d) {
         sStart = d;
     }
 
+    /**
+     * @return current schedule end date.
+     */
     public Date getScheduleEnd() {
         return sEnd;
     }
 
+    /**
+     * @param d new schedule end date.
+     */
     public void setScheduleEnd(Date d) {
         sEnd = d;
     }
 
+    /**
+     * @return current course id.
+     */
     public String getCourseID() {
         return cID;
     }
 
+    /**
+     * @param c new course id.
+     */
     public void setCourseID(String c) {
         cID = c;
     }
 
+    /**
+     * @return current course number.
+     */
     public String getCourseNumber() {
         return cNumber;
     }
 
+    /**
+     * @param n new course number.
+     */
     public void setCourseNumber(String n) {
         cNumber = n;
     }
 
+    /**
+     * @return current course type.
+     */
     public String getCourseType() {
         return cType;
     }
 
+    /**
+     * @param t new course type.
+     */
     public void setCourseType(String t) {
         cType = t;
     }
 
+    /**
+     * @return current course capacity.
+     */
     public int getCourseCapacity() {
         return cCapacity;
     }
 
+    /**
+     * @param c new course capacity.
+     */
     public void setCourseCapacity(int c) {
         cCapacity = c;
     }
 
+    /**
+     * @return current weekdays.
+     */
     public int[] getDays() {
         return days;
     }
 
+    /**
+     * @param d new weekdays.
+     * @return true if database update successful, false otherwise.
+     */
     public boolean setDays(int[] d) {
         if (d.length == days.length) {
             days = d;
@@ -203,10 +267,17 @@ public class Schedule {
         return false;
     }
 
+    /**
+     * @return current course features.
+     */
     public int[] getCourseFeatures() {
         return cFeat;
     }
 
+    /**
+     * @param f new course features.
+     * @return true if database update successful, false otherwise.
+     */
     public boolean setCourseFeatures(int[] f) {
         if (f.length == cFeat.length) {
             cFeat = f;
@@ -215,10 +286,17 @@ public class Schedule {
         return false;
     }
 
+    /**
+     * @return current course preferences.
+     */
     public String[] getCoursePreferences() {
         return cPrefs;
     }
 
+    /**
+     * @param p new course preferences.
+     * @return true if database update successful, false otherwise.
+     */
     public boolean setCoursePreferences(String[] p) {
         if (p.length == cPrefs.length) {
             cPrefs = p;
@@ -227,58 +305,101 @@ public class Schedule {
         return false;
     }
 
+    /**
+     * @return current building name.
+     */
     public String getBuildingID() {
         return bID;
     }
 
+    /**
+     * @param b new building id.
+     */
     public void setBuildingID(String b) {
         bID = b;
     }
 
+    /**
+     * @return current building name.
+     */
     public String getBuildingName() {
         return bName;
     }
 
+    /**
+     * @param n new building name.
+     */
     public void setBuildingName(String n) {
         bName = n;
     }
 
+    /**
+     * @return current room id.
+     */
     public String getRoomID() {
         return rID;
     }
 
+    /**
+     * @param r new room id.
+     */
     public void setRoomID(String r) {
         rID = r;
     }
 
+    /**
+     * @return current room type.
+     */
     public String getRoomType() {
         return rType;
     }
 
+    /**
+     * @param t new room type.
+     */
     public void setRoomType(String t) {
         rType = t;
     }
 
+    /**
+     * @return current room capacity.
+     */
     public int getRoomCapacity() {
         return rCapacity;
     }
 
+    /**
+     * @param c new room capacity.
+     */
     public void setRoomCapacity(int c) {
         rCapacity = c;
     }
 
+    /**
+     * @return current room number.
+     */
     public String getRoomNumber() {
         return rNumber;
     }
 
+    /**
+     * @param n new room number.
+     */
     public void setRoomNumber(String n) {
         rNumber = n;
     }
 
+    /**
+     * @return current features of the room in this schedule record.
+     */
     public int[] getRoomFeatures() {
         return rFeat;
     }
 
+    /**
+     * @param f new features to set.
+     * @return true if database update successful, false otherwise.
+     */
     public boolean setRoomFeatures(int[] f) {
         if (f.length == rFeat.length) {
             rFeat = f;
@@ -287,6 +408,10 @@ public class Schedule {
         return false;
     }
 
+    /**
+     * Updates the database with values from the object.
+     * @return true if successful, false otherwise.
+     */
     public boolean updateDB() {
         try {
             s.executeUpdate("UPDATE schedule SET "
