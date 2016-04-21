@@ -3,7 +3,6 @@ package Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -13,12 +12,22 @@ import java.util.ArrayList;
  * records in the database.
  *
  * @author Jenn Goodman
+ * {@value #NUM_FEATURES}
  */
 public class DBManager {
 
     //<editor-fold defaultstate="collapsed" desc="Fields">
+    /**
+     * The value of NUM-FEATURES is: {@value}
+     */
     public static final int NUM_FEATURES = 3;
+    /**
+     * The value of WEEKDAYS is: {@value}
+     */
     public static final int WEEKDAYS = 7;
+    /**
+     * The value of NUM_PREFERENCES is: {@value}
+     */
     public static final int NUM_PREFERENCES = 3;
 
     private String connection;
@@ -374,6 +383,7 @@ public class DBManager {
      * Features must be a 3 element array of 0's and 1's.
      *
      * @param bid BuildingID preference of Courses to include.
+     * @param feat features flags to limit matches.
      * @return Array of Course objects.
      */
     public Object[] getGeneralCourses(String bid, int[] feat) {
@@ -416,6 +426,31 @@ public class DBManager {
             report(e);
         }
         return r.toArray();
+    }
+    
+    /**
+     * Returns an Object[] array of Room objects sorted by room capacity.
+     * 
+     * @throws SQLException
+     * @return array of rooms or null if no rooms found.
+     */
+    public Object[] getAllRoomsByCapacity() throws SQLException {
+        ArrayList<Room> rooms = new ArrayList();
+        try {
+            result = statement.executeQuery("SELECT RoomID FROM room ORDER BY Capacity");
+            while (result.next()) {
+                rooms.add(new Room(dbc, result.getString(1)));
+            }
+        }
+        catch (SQLException e) {
+            report(e);
+        }
+        if (rooms.isEmpty()) {
+            return null;
+        }
+        else {
+            return rooms.toArray();
+        }
     }
 
     /**
