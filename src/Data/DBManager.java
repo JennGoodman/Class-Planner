@@ -29,6 +29,11 @@ public class DBManager {
      * The value of NUM_PREFERENCES is: {@value}
      */
     public static final int NUM_PREFERENCES = 3;
+    /**
+     * The value of LOCAL sets whether the system uses a local DB or remote.
+     * Currently set to {@value}
+     */
+    public static final boolean LOCAL = false;
 
     private String connection;
     private String username;
@@ -49,9 +54,14 @@ public class DBManager {
      * to that connection.
      */
     DBManager() {
-        connection = "ourcraft.ddns.net:3306/planner";
-        username = "app1";
-        password = "csc490";
+        if (LOCAL) {
+            connection = "localhost:3306/planner";
+        }
+        else {
+            connection = "ourcraft.ddns.net:3306/planner";
+        }
+            username = "app1";
+            password = "csc490";
         currentCourse = 0;
         currentBuilding = 0;
         currentRoom = 0;
