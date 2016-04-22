@@ -440,7 +440,7 @@ public class Schedule {
                     + ", BuildingID=" + bID
                     + ", BuildingName=" + bName
                     + ", RoomID=" + rID
-                    + ", RoomType='" + rType
+                    + ", RoomType=" + rType
                     + ", RoomCapacity=" + rCapacity
                     + ", RoomNumber=" + rNumber
                     + ", RoomFeature1=" + rFeat[0]
