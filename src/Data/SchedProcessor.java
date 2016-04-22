@@ -61,21 +61,20 @@ public class SchedProcessor {
 
             //loop rooms table
             for (int k = 0; (k < rooms.length) && isBooked == false; k++) {
-                
+
                 //if pref1 matches the building current room is in
-                
-                if (courses[j][16].toString().equals((rooms[k][4]).toString())) {
-                    System.out.println("found preferred building");
+                if (courses[j][15].toString().equals((rooms[k][4]).toString())) {
+                    //System.out.println("found preferred building");
                     //find proper RoomType in building
                     if (courses[j][3].toString().equals((rooms[k][1]).toString())) {
-                        System.out.println("found proper RoomType");
+                        //System.out.println("found proper RoomType");
                         //find room with capacity
                         if (Integer.parseInt((courses[j][4].toString())) <= Integer.parseInt((rooms[k][2].toString()))) {
                             //System.out.println(courses[j][4] + "   " + rooms[k][2]);
-                            System.out.println("found room with capacity");
+                            //System.out.println("found room with capacity");
                             //Normal or Auditorium Course
                             if (courses[j][3].toString().equals("0") || courses[j][3].toString().equals("1")) {
-                                System.out.println("found a normal or audtiorium class to be scheduled");
+                                //System.out.println("found a normal or audtiorium class to be scheduled");
                                 //MWF class
                                 if (courses[j][5].toString().equals("1")) {
                                     System.out.println("Found MWF class");
@@ -111,7 +110,397 @@ public class SchedProcessor {
                             }
                             //Lab course
                             if (courses[j][3].toString().equals("2") && isBooked == false) {
-                                System.out.println("found a Lab course");
+                                //System.out.println("found a Lab course");
+                                //M Lab
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found M Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Tues Lab
+
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                                //W Lab
+                                if (courses[j][7].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Wed Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < wedTT[0].length; l++) {
+                                        if (wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Thursday Lab
+                                if (courses[j][8].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Thurs Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < thuTT[0].length; l++) {
+                                        if (thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                //if pref2 matches the building current room is in
+                if ((courses[j][16].toString().equals((rooms[k][4]).toString())) && isBooked == false) {
+                    //System.out.println("found preferred building");
+                    //find proper RoomType in building
+                    if (courses[j][3].toString().equals((rooms[k][1]).toString())) {
+                        //System.out.println("found proper RoomType");
+                        //find room with capacity
+                        if (Integer.parseInt((courses[j][4].toString())) <= Integer.parseInt((rooms[k][2].toString()))) {
+                            //System.out.println(courses[j][4] + "   " + rooms[k][2]);
+                            //System.out.println("found room with capacity");
+                            //Normal or Auditorium Course
+                            if (courses[j][3].toString().equals("0") || courses[j][3].toString().equals("1")) {
+                                //System.out.println("found a normal or audtiorium class to be scheduled");
+                                //MWF class
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found MWF class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                } //T/TH class
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T/TH class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+                            //Lab course
+                            if (courses[j][3].toString().equals("2") && isBooked == false) {
+                                //System.out.println("found a Lab course");
+                                //M Lab
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found M Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Tues Lab
+
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                                //W Lab
+                                if (courses[j][7].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Wed Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < wedTT[0].length; l++) {
+                                        if (wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Thursday Lab
+                                if (courses[j][8].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Thurs Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < thuTT[0].length; l++) {
+                                        if (thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                //if pref3 matches the building current room is in
+                if ((courses[j][17].toString().equals((rooms[k][4]).toString())) && isBooked == false) {
+                    //System.out.println("found preferred building");
+                    //find proper RoomType in building
+                    if (courses[j][3].toString().equals((rooms[k][1]).toString())) {
+                        //System.out.println("found proper RoomType");
+                        //find room with capacity
+                        if (Integer.parseInt((courses[j][4].toString())) <= Integer.parseInt((rooms[k][2].toString()))) {
+                            //System.out.println(courses[j][4] + "   " + rooms[k][2]);
+                            //System.out.println("found room with capacity");
+                            //Normal or Auditorium Course
+                            if (courses[j][3].toString().equals("0") || courses[j][3].toString().equals("1")) {
+                                //System.out.println("found a normal or audtiorium class to be scheduled");
+                                //MWF class
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found MWF class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                } //T/TH class
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T/TH class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+                            //Lab course
+                            if (courses[j][3].toString().equals("2") && isBooked == false) {
+                                //System.out.println("found a Lab course");
+                                //M Lab
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found M Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Tues Lab
+
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                                //W Lab
+                                if (courses[j][7].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Wed Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < wedTT[0].length; l++) {
+                                        if (wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+                                //Thursday Lab
+                                if (courses[j][8].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found Thurs Lab class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < thuTT[0].length; l++) {
+                                        if (thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
+                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                //if no preference or no match on preference available
+                if (isBooked == false) {
+                    //System.out.println("found preferred building");
+                    //find proper RoomType in building
+                    if (courses[j][3].toString().equals((rooms[k][1]).toString())) {
+                        //System.out.println("found proper RoomType");
+                        //find room with capacity
+                        if (Integer.parseInt((courses[j][4].toString())) <= Integer.parseInt((rooms[k][2].toString()))) {
+                            //System.out.println(courses[j][4] + "   " + rooms[k][2]);
+                            //System.out.println("found room with capacity");
+                            //Normal or Auditorium Course
+                            if (courses[j][3].toString().equals("0") || courses[j][3].toString().equals("1")) {
+                                //System.out.println("found a normal or audtiorium class to be scheduled");
+                                //MWF class
+                                if (courses[j][5].toString().equals("1")) {
+                                    System.out.println("Found MWF class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < monTT[0].length; l++) {
+                                        if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                } //T/TH class
+                                if (courses[j][6].toString().equals("1") && isBooked == false) {
+                                    System.out.println("Found T/TH class");
+                                    System.out.println(courses[j][0]);
+
+                                    //find available time slot
+                                    for (int l = 0; l < tueTT[0].length; l++) {
+                                        if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
+                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
+                                            System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            isBooked = true;
+                                            break;
+                                        }
+                                    }
+
+                                }
+
+                            }
+                            //Lab course
+                            if (courses[j][3].toString().equals("2") && isBooked == false) {
+                                //System.out.println("found a Lab course");
                                 //M Lab
                                 if (courses[j][5].toString().equals("1")) {
                                     System.out.println("Found M Lab class");
