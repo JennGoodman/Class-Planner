@@ -89,6 +89,7 @@ public class SchedProcessor {
                                         if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -104,6 +105,7 @@ public class SchedProcessor {
                                         if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -127,6 +129,7 @@ public class SchedProcessor {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -146,6 +149,7 @@ public class SchedProcessor {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             //tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -165,6 +169,7 @@ public class SchedProcessor {
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -183,6 +188,7 @@ public class SchedProcessor {
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             //thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][15].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -219,6 +225,7 @@ public class SchedProcessor {
                                         if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -234,6 +241,7 @@ public class SchedProcessor {
                                         if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -257,6 +265,7 @@ public class SchedProcessor {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -276,6 +285,7 @@ public class SchedProcessor {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -295,6 +305,7 @@ public class SchedProcessor {
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -313,6 +324,7 @@ public class SchedProcessor {
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][16].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -349,6 +361,7 @@ public class SchedProcessor {
                                         if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -364,6 +377,7 @@ public class SchedProcessor {
                                         if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -387,6 +401,7 @@ public class SchedProcessor {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -406,6 +421,7 @@ public class SchedProcessor {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -425,6 +441,7 @@ public class SchedProcessor {
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -443,6 +460,7 @@ public class SchedProcessor {
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), courses[j][17].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -479,6 +497,7 @@ public class SchedProcessor {
                                         if (monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -494,6 +513,7 @@ public class SchedProcessor {
                                         if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+9), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -517,6 +537,7 @@ public class SchedProcessor {
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             monTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(monTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -536,6 +557,7 @@ public class SchedProcessor {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -555,6 +577,7 @@ public class SchedProcessor {
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(wedTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -573,6 +596,7 @@ public class SchedProcessor {
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
+                                            addSched(courses[j][1].toString(), Integer.toString(l+8), Integer.toString(l+11), rooms[k][3].toString(), rooms[k][4].toString());
                                             isBooked = true;
                                             break;
                                         }
@@ -595,7 +619,7 @@ public class SchedProcessor {
                  */
             }
         }
-        //addSched("11");
+        //addSched("11", "9:00", "9:50" , "25", "Petty");
         //uploadSchedule();
     }
     
