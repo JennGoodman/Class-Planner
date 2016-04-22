@@ -355,7 +355,7 @@ public class DBManager {
         ArrayList<Object[]> tempList = new ArrayList();
         Object[] tempRow;
         try {
-            result = statement.executeQuery("SELECT * FROM room");
+            result = statement.executeQuery("SELECT * FROM room ORDER BY Capacity");
             while (result.next()) {
                 tempRow = new Object[5];
                 tempRow[0] = result.getInt("RoomID");
