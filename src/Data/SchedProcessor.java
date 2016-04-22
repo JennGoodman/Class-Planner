@@ -594,7 +594,8 @@ public class SchedProcessor {
                  */
             }
         }
-        uploadSchedule();
+        addSched("11");
+        //uploadSchedule();
     }
     
    
@@ -624,6 +625,7 @@ public class SchedProcessor {
         DBManager dbm = new DBManager();
         Schedule s = dbm.newSchedule();
         s.setCourseID(cid);
+        s.updateDB();
 
         
         
