@@ -414,38 +414,38 @@ public class Schedule {
      */
     public boolean updateDB() {
         try {
-            s.executeUpdate("UPDATE schedule SET "
-                    + "ScheduleName=" + sName
-                    + "ScheduleScore=" + sScore
-                    + "ScheduleCreationDate=" + sCreationDate
-                    + "ScheduleStart=" + sStart
-                    + "ScheduleEnd=" + sEnd
-                    + "CourseID=" + cID
-                    + "CourseNumber=" + cNumber
-                    + "CourseType=" + cType
-                    + "CourseCapacity=" + cCapacity
-                    + "Monday=" + days[0]
-                    + "Tuesday=" + days[1]
-                    + "Wednesday=" + days[2]
-                    + "Thursday=" + days[3]
-                    + "Friday=" + days[4]
-                    + "Saturday=" + days[5]
-                    + "Sunday=" + days[6]
-                    + "CourseFeature1=" + cFeat[0]
-                    + "CourseFeature2=" + cFeat[1]
-                    + "CourseFeature3=" + cFeat[2]
-                    + "CoursePreference1=" + cPrefs[0]
-                    + "CoursePreference2=" + cPrefs[1]
-                    + "CoursePreference3=" + cPrefs[2]
-                    + "BuildingID=" + bID
-                    + "BuildingName=" + bName
-                    + "RoomID=" + rID
-                    + "RoomType=" + rType
-                    + "RoomCapacity=" + rCapacity
-                    + "RoomNumber=" + rNumber
-                    + "RoomFeature1=" + rFeat[0]
-                    + "RoomFeature2=" + rFeat[1]
-                    + "RoomFeature3=" + rFeat[2]);
+            s.executeUpdate("UPDATE schedule SET"
+                    + " ScheduleName=" + sName
+                    + " ScheduleScore=" + sScore
+                    + " ScheduleCreationDate=" + sCreationDate
+                    + " ScheduleStart=" + sStart
+                    + " ScheduleEnd=" + sEnd
+                    + " CourseID=" + cID
+                    + " CourseNumber=" + cNumber
+                    + " CourseType=" + cType
+                    + " CourseCapacity=" + cCapacity
+                    + " Monday=" + days[0]
+                    + " Tuesday=" + days[1]
+                    + " Wednesday=" + days[2]
+                    + " Thursday=" + days[3]
+                    + " Friday=" + days[4]
+                    + " Saturday=" + days[5]
+                    + " Sunday=" + days[6]
+                    + " CourseFeature1=" + cFeat[0]
+                    + " CourseFeature2=" + cFeat[1]
+                    + " CourseFeature3=" + cFeat[2]
+                    + " CoursePreference1=" + cPrefs[0]
+                    + " CoursePreference2=" + cPrefs[1]
+                    + " CoursePreference3=" + cPrefs[2]
+                    + " BuildingID=" + bID
+                    + " BuildingName=" + bName
+                    + " RoomID=" + rID
+                    + " RoomType=" + rType
+                    + " RoomCapacity=" + rCapacity
+                    + " RoomNumber=" + rNumber
+                    + " RoomFeature1=" + rFeat[0]
+                    + " RoomFeature2=" + rFeat[1]
+                    + " RoomFeature3=" + rFeat[2]);
         } catch (SQLException e) {
             return report(e);
         }
