@@ -1,5 +1,6 @@
 package Data;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class SchedProcessor {
     private final int E_SEAT_SCORE_WT = 10;
     private int[][] monTT, tueTT, wedTT, thuTT, friTT;
     private boolean isBooked;
+    private ArrayList<Schedule> schedArr;
 
     public static void main(String[] args) throws SQLException {
 
@@ -42,6 +44,7 @@ public class SchedProcessor {
         thuTT = new int[rooms.length][6];
         friTT = new int[rooms.length][9];
         isBooked = false;
+        schedArr = new ArrayList<Schedule>();
 
     }
 
@@ -591,6 +594,39 @@ public class SchedProcessor {
                  */
             }
         }
+        uploadSchedule();
+    }
+    
+   
+    
+    public void uploadSchedule(){
+        
+        //Monday
+        for(int i=0; i < monTT.length; i++){
+            for(int j=0; j< monTT[0].length; j++){
+                
+                if(monTT[i][j] != 0){
+                    System.out.println(i + " " + j);
+                    System.out.println(monTT[i][j]);
+                   //addSched(Integer.toString(monTT[i][j])); 
+                    
+                }
+                
+                
+            }
+        }
+        
+        
+    }
+    
+    public void addSched(String cid){
+        
+        DBManager dbm = new DBManager();
+        Schedule s = dbm.newSchedule();
+        s.setCourseID(cid);
+
+        
+        
     }
 
 }
