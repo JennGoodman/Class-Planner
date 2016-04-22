@@ -135,6 +135,10 @@ public class CreateSchedule extends javax.swing.JFrame {
             System.out.println(result);
             if(result == 0){
                 //INSERT ALGORITHM HERE
+                SchedProcessor processor = new SchedProcessor(inputName);
+                processor.process();
+                
+                
             }
         }
         
