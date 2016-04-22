@@ -1,6 +1,7 @@
 package Data;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +45,7 @@ public class SchedProcessor {
         thuTT = new int[rooms.length][6];
         friTT = new int[rooms.length][9];
         isBooked = false;
-        schedArr = new ArrayList<Schedule>();
+        //schedArr = new ArrayList<Schedule>();
 
     }
 
@@ -143,7 +144,7 @@ public class SchedProcessor {
                                         if (tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
-                                            tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            //tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(tueTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
                                             isBooked = true;
                                             break;
@@ -180,7 +181,7 @@ public class SchedProcessor {
                                         if (thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] == 0) {
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l] = Integer.parseInt((courses[j][0].toString()));
                                             thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 1] = Integer.parseInt((courses[j][0].toString()));
-                                            thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
+                                            //thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l + 2] = Integer.parseInt((courses[j][0].toString()));
                                             System.out.println(thuTT[Integer.parseInt((courses[j][0].toString())) - 1][l]);
                                             isBooked = true;
                                             break;
@@ -594,7 +595,7 @@ public class SchedProcessor {
                  */
             }
         }
-        addSched("11");
+        //addSched("11");
         //uploadSchedule();
     }
     
@@ -616,15 +617,21 @@ public class SchedProcessor {
                 
             }
         }
+
+        addSched("11", "9:00", "9:50" , "25", "Petty");
         
         
     }
     
-    public void addSched(String cid){
+    public void addSched(String cname, String stime, String etime, String rnum, String bname ){
         
         DBManager dbm = new DBManager();
         Schedule s = dbm.newSchedule();
-        s.setCourseID(cid);
+        s.setCourseNumber(cname);
+        s.setScheduleStart(stime);
+        s.setScheduleEnd(etime);
+        s.setRoomNumber(rnum);
+        s.setBuildingName(bname);
         s.updateDB();
 
         
