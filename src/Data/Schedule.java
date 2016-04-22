@@ -1,7 +1,6 @@
 package Data;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,9 +20,9 @@ public class Schedule {
     private String sID;
     private String sName;
     private int sScore;
-    private Date sCreationDate;
-    private Date sStart;
-    private Date sEnd;
+    private String sCreationDate;
+    private String sStart;
+    private String sEnd;
     private String cID;
     private String cNumber;
     private String cType;
@@ -80,9 +79,9 @@ public class Schedule {
             if (r.next()) {
                 sName = r.getString(2);
                 sScore = r.getInt(3);
-                sCreationDate = r.getDate(4);
-                sStart = r.getDate(5);
-                sEnd = r.getDate(6);
+                sCreationDate = r.getString(4);
+                sStart = r.getString(5);
+                sEnd = r.getString(6);
                 cID = r.getString(7);
                 cNumber = r.getString(8);
                 cType = r.getString(9);
@@ -153,42 +152,42 @@ public class Schedule {
     /**
      * @return current schedule creation date.
      */
-    public Date getScheduleCreationDate() {
+    public String getScheduleCreationDate() {
         return sCreationDate;
     }
 
     /**
      * @param d new schedule creation date.
      */
-    public void setScheduleCreationDate(Date d) {
+    public void setScheduleCreationDate(String d) {
         sCreationDate = d;
     }
 
     /**
      * @return current schedule start date.
      */
-    public Date getScheduleStart() {
+    public String getScheduleStart() {
         return sStart;
     }
 
     /**
      * @param d new schedule start date.
      */
-    public void setScheduleStart(Date d) {
+    public void setScheduleStart(String d) {
         sStart = d;
     }
 
     /**
      * @return current schedule end date.
      */
-    public Date getScheduleEnd() {
+    public String getScheduleEnd() {
         return sEnd;
     }
 
     /**
      * @param d new schedule end date.
      */
-    public void setScheduleEnd(Date d) {
+    public void setScheduleEnd(String d) {
         sEnd = d;
     }
 

@@ -234,7 +234,9 @@ public class DBManager {
             result = statement.executeQuery(
                     "SELECT DISTINCT ScheduleName FROM schedule");
             while (result.next()) {
-                temp.add(result.getString(1));
+                if (result.getString(1) != null) {
+                    temp.add(result.getString(1));
+                }
             }
             names = new String[temp.size()];
             for (int x = 0; x < names.length; x++) {
@@ -277,7 +279,9 @@ public class DBManager {
         try {
             result = statement.executeQuery("SELECT Name FROM building");
             while (result.next()) {
-                temp.add(result.getString(1));
+                if (result.getString(1) != null) {
+                    temp.add(result.getString(1));
+                }
             }
             names = new String[temp.size()];
             for (int x = 0; x < names.length; x++) {
